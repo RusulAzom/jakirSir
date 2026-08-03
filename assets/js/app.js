@@ -14,7 +14,7 @@
 
 const App = {
 
-    init(){
+    init() {
 
         this.cache();
 
@@ -33,7 +33,7 @@ const App = {
     },
 
 
-    cache(){
+    cache() {
 
         this.runningWrapper = document.querySelector(".courseSwiper .swiper-wrapper");
 
@@ -51,77 +51,77 @@ const App = {
 
 const runningCourses = [
 
-{
+    {
 
-id:1,
+        id: 1,
 
-title:"Bank Job Complete Batch",
+        title: "Bank Job Complete Batch",
 
-price:"৳1999",
+        price: "৳1999",
 
-duration:"6 Months",
+        duration: "6 Months",
 
-students:5240,
+        students: 5240,
 
-image:"images/course1.jpg",
+        image: "images/course1.jpg",
 
-badge:"LIVE"
+        badge: "LIVE"
 
-},
+    },
 
-{
+    {
 
-id:2,
+        id: 2,
 
-title:"Primary Teacher",
+        title: "Primary Teacher",
 
-price:"৳1499",
+        price: "৳1499",
 
-duration:"4 Months",
+        duration: "4 Months",
 
-students:3100,
+        students: 3100,
 
-image:"images/course2.jpg",
+        image: "images/course2.jpg",
 
-badge:"HOT"
+        badge: "HOT"
 
-},
+    },
 
-{
+    {
 
-id:3,
+        id: 3,
 
-title:"Health Assistant",
+        title: "Health Assistant",
 
-price:"৳1699",
+        price: "৳1699",
 
-duration:"5 Months",
+        duration: "5 Months",
 
-students:2700,
+        students: 2700,
 
-image:"images/course3.jpg",
+        image: "images/course3.jpg",
 
-badge:"NEW"
+        badge: "NEW"
 
-},
+    },
 
-{
+    {
 
-id:4,
+        id: 4,
 
-title:"Math Master Course",
+        title: "Math Master Course",
 
-price:"৳999",
+        price: "৳999",
 
-duration:"2 Months",
+        duration: "2 Months",
 
-students:4300,
+        students: 4300,
 
-image:"images/course4.jpg",
+        image: "images/course4.jpg",
 
-badge:"TOP"
+        badge: "TOP"
 
-}
+    }
 
 ];
 
@@ -129,85 +129,85 @@ badge:"TOP"
 
 const popularCourses = [
 
-{
+    {
 
-id:1,
+        id: 1,
 
-title:"Sonali Bank Premium Batch",
+        title: "Sonali Bank Premium Batch",
 
-price:"৳2499",
+        price: "৳2499",
 
-duration:"180 Days",
+        duration: "180 Days",
 
-image:"images/pop1.jpg",
+        image: "images/pop1.jpg",
 
-label:"Bank"
+        label: "Bank"
 
-},
+    },
 
-{
+    {
 
-id:2,
+        id: 2,
 
-title:"BCS Math Crash Course",
+        title: "BCS Math Crash Course",
 
-price:"৳1299",
+        price: "৳1299",
 
-duration:"90 Days",
+        duration: "90 Days",
 
-image:"images/pop2.jpg",
+        image: "images/pop2.jpg",
 
-label:"Math"
+        label: "Math"
 
-},
+    },
 
-{
+    {
 
-id:3,
+        id: 3,
 
-title:"NTRCA Complete",
+        title: "NTRCA Complete",
 
-price:"৳1999",
+        price: "৳1999",
 
-duration:"120 Days",
+        duration: "120 Days",
 
-image:"images/pop3.jpg",
+        image: "images/pop3.jpg",
 
-label:"Govt"
+        label: "Govt"
 
-},
+    },
 
-{
+    {
 
-id:4,
+        id: 4,
 
-title:"GK Premium",
+        title: "GK Premium",
 
-price:"৳899",
+        price: "৳899",
 
-duration:"60 Days",
+        duration: "60 Days",
 
-image:"images/pop4.jpg",
+        image: "images/pop4.jpg",
 
-label:"GK"
+        label: "GK"
 
-},
+    },
 
-{
+    {
 
-id:5,
+        id: 5,
 
-title:"English Masterclass",
+        title: "English Masterclass",
 
-price:"৳1099",
+        price: "৳1099",
 
-duration:"80 Days",
+        duration: "80 Days",
 
-image:"images/pop5.jpg",
+        image: "images/pop5.jpg",
 
-label:"English"
+        label: "English"
 
-}
+    }
 
 ];
 
@@ -219,9 +219,9 @@ label:"English"
             RUNNING COURSE TEMPLATE
 =========================================================*/
 
-function runningCard(course){
+function runningCard(course) {
 
-return `
+    return `
 
 <div class="swiper-slide">
 
@@ -301,9 +301,9 @@ Enroll
         POPULAR COURSE TEMPLATE
 =========================================================*/
 
-function popularCard(course){
+function popularCard(course) {
 
-return `
+    return `
 
 <div class="swiper-slide">
 
@@ -385,33 +385,33 @@ Details
             RENDER FUNCTIONS
 =========================================================*/
 
-App.renderRunningCourses = function(){
+App.renderRunningCourses = function () {
 
-if(!this.runningWrapper) return;
+    if (!this.runningWrapper) return;
 
-this.runningWrapper.innerHTML =
+    this.runningWrapper.innerHTML =
 
-runningCourses.map(
+        runningCourses.map(
 
-runningCard
+            runningCard
 
-).join("");
+        ).join("");
 
 };
 
 
 
-App.renderPopularCourses = function(){
+App.renderPopularCourses = function () {
 
-if(!this.popularWrapper) return;
+    if (!this.popularWrapper) return;
 
-this.popularWrapper.innerHTML =
+    this.popularWrapper.innerHTML =
 
-popularCourses.map(
+        popularCourses.map(
 
-popularCard
+            popularCard
 
-).join("");
+        ).join("");
 
 };
 
@@ -423,35 +423,35 @@ popularCard
                 HERO SWIPER
 =========================================================*/
 
-App.initHeroSwiper = function(){
+App.initHeroSwiper = function () {
 
-new Swiper(".heroSwiper",{
+    new Swiper(".heroSwiper", {
 
-loop:true,
+        loop: true,
 
-speed:700,
+        speed: 700,
 
-spaceBetween:0,
+        spaceBetween: 0,
 
-autoplay:{
+        autoplay: {
 
-delay:3500,
+            delay: 3500,
 
-disableOnInteraction:false
+            disableOnInteraction: false
 
-},
+        },
 
-pagination:{
+        pagination: {
 
-el:".swiper-pagination",
+            el: ".swiper-pagination",
 
-clickable:true
+            clickable: true
 
-},
+        },
 
-effect:"slide"
+        effect: "slide"
 
-});
+    });
 
 };
 
@@ -463,19 +463,19 @@ effect:"slide"
             RUNNING COURSE SWIPER
 =========================================================*/
 
-App.initCourseSwiper = function(){
+App.initCourseSwiper = function () {
 
-new Swiper(".courseSwiper",{
+    new Swiper(".courseSwiper", {
 
-slidesPerView:"auto",
+        slidesPerView: "auto",
 
-spaceBetween:18,
+        spaceBetween: 18,
 
-freeMode:true,
+        freeMode: true,
 
-grabCursor:true
+        grabCursor: true
 
-});
+    });
 
 };
 
@@ -487,19 +487,19 @@ grabCursor:true
             POPULAR COURSE SWIPER
 =========================================================*/
 
-App.initPopularSwiper = function(){
+App.initPopularSwiper = function () {
 
-new Swiper(".popularSwiper",{
+    new Swiper(".popularSwiper", {
 
-slidesPerView:"auto",
+        slidesPerView: "auto",
 
-spaceBetween:20,
+        spaceBetween: 20,
 
-freeMode:true,
+        freeMode: true,
 
-grabCursor:true
+        grabCursor: true
 
-});
+    });
 
 };
 
@@ -511,55 +511,55 @@ grabCursor:true
             UTILITIES
 =========================================================*/
 
-const Utils={
+const Utils = {
 
-qs(selector){
+    qs(selector) {
 
-return document.querySelector(selector);
+        return document.querySelector(selector);
 
-},
+    },
 
-qsa(selector){
+    qsa(selector) {
 
-return document.querySelectorAll(selector);
+        return document.querySelectorAll(selector);
 
-},
+    },
 
-create(element){
+    create(element) {
 
-return document.createElement(element);
+        return document.createElement(element);
 
-},
+    },
 
-random(min,max){
+    random(min, max) {
 
-return Math.floor(
+        return Math.floor(
 
-Math.random()*(max-min+1)
+            Math.random() * (max - min + 1)
 
-)+min;
+        ) + min;
 
-},
+    },
 
-formatPrice(value){
+    formatPrice(value) {
 
-return new Intl.NumberFormat(
+        return new Intl.NumberFormat(
 
-"en-BD"
+            "en-BD"
 
-).format(value);
+        ).format(value);
 
-},
+    },
 
-sleep(ms){
+    sleep(ms) {
 
-return new Promise(
+        return new Promise(
 
-resolve=>setTimeout(resolve,ms)
+            resolve => setTimeout(resolve, ms)
 
-);
+        );
 
-}
+    }
 
 };
 
@@ -573,13 +573,13 @@ resolve=>setTimeout(resolve,ms)
 
 window.addEventListener(
 
-"DOMContentLoaded",
+    "DOMContentLoaded",
 
-()=>{
+    () => {
 
-App.init();
+        App.init();
 
-}
+    }
 
 );
 /*=========================================================
@@ -612,75 +612,75 @@ App.cache = function () {
 
 const quickTools = [
 
-{
-    title:"MCQ",
-    icon:"ri-file-list-3-line",
-    color:"#8B5CF6",
-    link:"#"
-},
+    {
+        title: "MCQ",
+        icon: "ri-file-list-3-line",
+        color: "#8B5CF6",
+        link: "#"
+    },
 
-{
-    title:"প্রশ্নব্যাংক",
-    icon:"ri-book-open-line",
-    color:"#2563EB",
-    link:"#"
-},
+    {
+        title: "প্রশ্নব্যাংক",
+        icon: "ri-book-open-line",
+        color: "#2563EB",
+        link: "#"
+    },
 
-{
-    title:"মক টেস্ট",
-    icon:"ri-checkbox-circle-line",
-    color:"#22C55E",
-    link:"#"
-},
+    {
+        title: "মক টেস্ট",
+        icon: "ri-checkbox-circle-line",
+        color: "#22C55E",
+        link: "#"
+    },
 
-{
-    title:"বইপত্র",
-    icon:"ri-file-pdf-line",
-    color:"#EF4444",
-    link:"#"
-},
+    {
+        title: "বইপত্র",
+        icon: "ri-file-pdf-line",
+        color: "#EF4444",
+        link: "#"
+    },
 
-{
-    title:"সকল কোর্স",
-    icon:"ri-graduation-cap-line",
-    color:"#F97316",
-    link:"#"
-},
+    {
+        title: "সকল কোর্স",
+        icon: "ri-graduation-cap-line",
+        color: "#F97316",
+        link: "#"
+    },
 
-{
-    title:"GK",
-    icon:"ri-global-line",
-    color:"#06B6D4",
-    link:"#"
-},
+    {
+        title: "GK",
+        icon: "ri-global-line",
+        color: "#06B6D4",
+        link: "#"
+    },
 
-{
-    title:"Math",
-    icon:"ri-calculator-line",
-    color:"#10B981",
-    link:"#"
-},
+    {
+        title: "Math",
+        icon: "ri-calculator-line",
+        color: "#10B981",
+        link: "#"
+    },
 
-{
-    title:"English",
-    icon:"ri-english-input",
-    color:"#3B82F6",
-    link:"#"
-},
+    {
+        title: "English",
+        icon: "ri-english-input",
+        color: "#3B82F6",
+        link: "#"
+    },
 
-{
-    title:"Vocabulary",
-    icon:"ri-spell-check-line",
-    color:"#9333EA",
-    link:"#"
-},
+    {
+        title: "Vocabulary",
+        icon: "ri-spell-check-line",
+        color: "#9333EA",
+        link: "#"
+    },
 
-{
-    title:"Routine",
-    icon:"ri-calendar-event-line",
-    color:"#DC2626",
-    link:"#"
-}
+    {
+        title: "Routine",
+        icon: "ri-calendar-event-line",
+        color: "#DC2626",
+        link: "#"
+    }
 
 ];
 
@@ -692,37 +692,37 @@ const quickTools = [
 
 const statistics = [
 
-{
+    {
 
-number:"446K+",
+        number: "446K+",
 
-label:"Followers"
+        label: "Followers"
 
-},
+    },
 
-{
+    {
 
-number:"50K+",
+        number: "50K+",
 
-label:"Students"
+        label: "Students"
 
-},
+    },
 
-{
+    {
 
-number:"520+",
+        number: "520+",
 
-label:"Videos"
+        label: "Videos"
 
-},
+    },
 
-{
+    {
 
-number:"250+",
+        number: "250+",
 
-label:"PDF"
+        label: "PDF"
 
-}
+    }
 
 ];
 
@@ -734,9 +734,9 @@ label:"PDF"
             QUICK TOOL TEMPLATE
 =========================================================*/
 
-function toolTemplate(tool){
+function toolTemplate(tool) {
 
-return `
+    return `
 
 <a href="${tool.link}" class="tool">
 
@@ -766,15 +766,15 @@ ${tool.title}
             STAT TEMPLATE
 =========================================================*/
 
-function statTemplate(item){
+function statTemplate(item) {
 
-return `
+    return `
 
 <div class="stat">
 
 <h3 class="counter"
 
-data-count="${item.number.replace(/\D/g,'')}">
+data-count="${item.number.replace(/\D/g, '')}">
 
 0
 
@@ -800,17 +800,17 @@ ${item.label}
             RENDER QUICK TOOLS
 =========================================================*/
 
-App.renderQuickTools=function(){
+App.renderQuickTools = function () {
 
-if(!this.toolGrid) return;
+    if (!this.toolGrid) return;
 
-this.toolGrid.innerHTML=
+    this.toolGrid.innerHTML =
 
-quickTools
+        quickTools
 
-.map(toolTemplate)
+            .map(toolTemplate)
 
-.join("");
+            .join("");
 
 };
 
@@ -822,17 +822,17 @@ quickTools
             RENDER STATISTICS
 =========================================================*/
 
-App.renderStatistics=function(){
+App.renderStatistics = function () {
 
-if(!this.statsSection) return;
+    if (!this.statsSection) return;
 
-this.statsSection.innerHTML=
+    this.statsSection.innerHTML =
 
-statistics
+        statistics
 
-.map(statTemplate)
+            .map(statTemplate)
 
-.join("");
+            .join("");
 
 };
 
@@ -844,49 +844,49 @@ statistics
             COUNTER ANIMATION
 =========================================================*/
 
-App.animateCounters=function(){
+App.animateCounters = function () {
 
-const counters=document.querySelectorAll(".counter");
+    const counters = document.querySelectorAll(".counter");
 
-counters.forEach(counter=>{
+    counters.forEach(counter => {
 
-const target=
+        const target =
 
-Number(
+            Number(
 
-counter.dataset.count
+                counter.dataset.count
 
-);
+            );
 
-let count=0;
+        let count = 0;
 
-const speed=target/70;
+        const speed = target / 70;
 
-const update=()=>{
+        const update = () => {
 
-count+=speed;
+            count += speed;
 
-if(count<target){
+            if (count < target) {
 
-counter.innerHTML=
+                counter.innerHTML =
 
-Math.floor(count)+"+";
+                    Math.floor(count) + "+";
 
-requestAnimationFrame(update);
+                requestAnimationFrame(update);
 
-}else{
+            } else {
 
-counter.innerHTML=
+                counter.innerHTML =
 
-target+"+";
+                    target + "+";
 
-}
+            }
 
-};
+        };
 
-update();
+        update();
 
-});
+    });
 
 };
 
@@ -898,25 +898,25 @@ update();
             TOOL CLICK EFFECT
 =========================================================*/
 
-App.toolEffects=function(){
+App.toolEffects = function () {
 
-const tools=document.querySelectorAll(".tool");
+    const tools = document.querySelectorAll(".tool");
 
-tools.forEach(tool=>{
+    tools.forEach(tool => {
 
-tool.addEventListener("click",()=>{
+        tool.addEventListener("click", () => {
 
-tool.style.transform="scale(.92)";
+            tool.style.transform = "scale(.92)";
 
-setTimeout(()=>{
+            setTimeout(() => {
 
-tool.style.transform="";
+                tool.style.transform = "";
 
-},150);
+            }, 150);
 
-});
+        });
 
-});
+    });
 
 };
 
@@ -928,23 +928,23 @@ tool.style.transform="";
             UPDATE INIT
 =========================================================*/
 
-const oldInit=App.init;
+const oldInit = App.init;
 
-App.init=function(){
+App.init = function () {
 
-oldInit.call(this);
+    oldInit.call(this);
 
-this.renderQuickTools();
+    this.renderQuickTools();
 
-this.renderStatistics();
+    this.renderStatistics();
 
-this.toolEffects();
+    this.toolEffects();
 
-setTimeout(()=>{
+    setTimeout(() => {
 
-this.animateCounters();
+        this.animateCounters();
 
-},600);
+    }, 600);
 
 };
 /*=========================================================
@@ -979,113 +979,113 @@ App.cache = function () {
 
 const blogs = [
 
-{
+    {
 
-id:1,
+        id: 1,
 
-title:"সোনালী ব্যাংক পরীক্ষার শেষ মুহূর্তের প্রস্তুতি",
+        title: "সোনালী ব্যাংক পরীক্ষার শেষ মুহূর্তের প্রস্তুতি",
 
-category:"Bank Job",
+        category: "Bank Job",
 
-date:"03 Aug 2026",
+        date: "03 Aug 2026",
 
-image:"images/blog1.jpg",
+        image: "images/blog1.jpg",
 
-excerpt:"সোনালী ব্যাংকের লিখিত ও MCQ পরীক্ষার জন্য গুরুত্বপূর্ণ সাজেশন ও প্রস্তুতির কৌশল।",
+        excerpt: "সোনালী ব্যাংকের লিখিত ও MCQ পরীক্ষার জন্য গুরুত্বপূর্ণ সাজেশন ও প্রস্তুতির কৌশল।",
 
-url:"#"
+        url: "#"
 
-},
+    },
 
-{
+    {
 
-id:2,
+        id: 2,
 
-title:"স্বাস্থ্য সহকারী পরীক্ষার পূর্ণাঙ্গ সিলেবাস",
+        title: "স্বাস্থ্য সহকারী পরীক্ষার পূর্ণাঙ্গ সিলেবাস",
 
-category:"Health",
+        category: "Health",
 
-date:"02 Aug 2026",
+        date: "02 Aug 2026",
 
-image:"images/blog2.jpg",
+        image: "images/blog2.jpg",
 
-excerpt:"স্বাস্থ্য সহকারী পরীক্ষার আপডেটেড সিলেবাস ও প্রস্তুতির গাইডলাইন।",
+        excerpt: "স্বাস্থ্য সহকারী পরীক্ষার আপডেটেড সিলেবাস ও প্রস্তুতির গাইডলাইন।",
 
-url:"#"
+        url: "#"
 
-},
+    },
 
-{
+    {
 
-id:3,
+        id: 3,
 
-title:"BCS গণিত প্রস্তুতি ৩০ দিনে",
+        title: "BCS গণিত প্রস্তুতি ৩০ দিনে",
 
-category:"Math",
+        category: "Math",
 
-date:"01 Aug 2026",
+        date: "01 Aug 2026",
 
-image:"images/blog3.jpg",
+        image: "images/blog3.jpg",
 
-excerpt:"প্রতিদিন মাত্র এক ঘণ্টা পড়েই গণিত প্রস্তুতি সম্পন্ন করার পরিকল্পনা।",
+        excerpt: "প্রতিদিন মাত্র এক ঘণ্টা পড়েই গণিত প্রস্তুতি সম্পন্ন করার পরিকল্পনা।",
 
-url:"#"
+        url: "#"
 
-},
+    },
 
-{
+    {
 
-id:4,
+        id: 4,
 
-title:"বাংলাদেশ ব্যাংক MCQ গুরুত্বপূর্ণ প্রশ্ন",
+        title: "বাংলাদেশ ব্যাংক MCQ গুরুত্বপূর্ণ প্রশ্ন",
 
-category:"Bank",
+        category: "Bank",
 
-date:"30 Jul 2026",
+        date: "30 Jul 2026",
 
-image:"images/blog4.jpg",
+        image: "images/blog4.jpg",
 
-excerpt:"বাংলাদেশ ব্যাংকের পূর্ববর্তী পরীক্ষার গুরুত্বপূর্ণ MCQ প্রশ্নসমূহ।",
+        excerpt: "বাংলাদেশ ব্যাংকের পূর্ববর্তী পরীক্ষার গুরুত্বপূর্ণ MCQ প্রশ্নসমূহ।",
 
-url:"#"
+        url: "#"
 
-},
+    },
 
-{
+    {
 
-id:5,
+        id: 5,
 
-title:"প্রাথমিক শিক্ষক নিয়োগ আপডেট",
+        title: "প্রাথমিক শিক্ষক নিয়োগ আপডেট",
 
-category:"Primary",
+        category: "Primary",
 
-date:"28 Jul 2026",
+        date: "28 Jul 2026",
 
-image:"images/blog5.jpg",
+        image: "images/blog5.jpg",
 
-excerpt:"নিয়োগ বিজ্ঞপ্তি, পরীক্ষা তারিখ ও প্রস্তুতির গুরুত্বপূর্ণ নির্দেশনা।",
+        excerpt: "নিয়োগ বিজ্ঞপ্তি, পরীক্ষা তারিখ ও প্রস্তুতির গুরুত্বপূর্ণ নির্দেশনা।",
 
-url:"#"
+        url: "#"
 
-},
+    },
 
-{
+    {
 
-id:6,
+        id: 6,
 
-title:"ইংরেজি Vocabulary মনে রাখার সহজ উপায়",
+        title: "ইংরেজি Vocabulary মনে রাখার সহজ উপায়",
 
-category:"English",
+        category: "English",
 
-date:"25 Jul 2026",
+        date: "25 Jul 2026",
 
-image:"images/blog6.jpg",
+        image: "images/blog6.jpg",
 
-excerpt:"প্রতিদিন মাত্র ১৫ মিনিটে Vocabulary আয়ত্ত করার কার্যকর কৌশল।",
+        excerpt: "প্রতিদিন মাত্র ১৫ মিনিটে Vocabulary আয়ত্ত করার কার্যকর কৌশল।",
 
-url:"#"
+        url: "#"
 
-}
+    }
 
 ];
 
@@ -1096,39 +1096,39 @@ url:"#"
             CATEGORY COLOR
 =========================================================*/
 
-function blogBadge(category){
+function blogBadge(category) {
 
-switch(category){
+    switch (category) {
 
-case "Bank Job":
+        case "Bank Job":
 
-return "#2563EB";
+            return "#2563EB";
 
-case "Bank":
+        case "Bank":
 
-return "#2563EB";
+            return "#2563EB";
 
-case "Health":
+        case "Health":
 
-return "#22C55E";
+            return "#22C55E";
 
-case "Math":
+        case "Math":
 
-return "#F97316";
+            return "#F97316";
 
-case "Primary":
+        case "Primary":
 
-return "#9333EA";
+            return "#9333EA";
 
-case "English":
+        case "English":
 
-return "#06B6D4";
+            return "#06B6D4";
 
-default:
+        default:
 
-return "#64748B";
+            return "#64748B";
 
-}
+    }
 
 }
 
@@ -1140,9 +1140,9 @@ return "#64748B";
             BLOG TEMPLATE
 =========================================================*/
 
-function blogTemplate(blog){
+function blogTemplate(blog) {
 
-return `
+    return `
 
 <article class="blog-card fade-up">
 
@@ -1220,17 +1220,17 @@ Read More
             RENDER BLOGS
 =========================================================*/
 
-App.renderBlogs=function(){
+App.renderBlogs = function () {
 
-if(!this.blogGrid) return;
+    if (!this.blogGrid) return;
 
-this.blogGrid.innerHTML=
+    this.blogGrid.innerHTML =
 
-blogs
+        blogs
 
-.map(blogTemplate)
+            .map(blogTemplate)
 
-.join("");
+            .join("");
 
 };
 
@@ -1242,25 +1242,25 @@ blogs
             BLOG HOVER EFFECT
 =========================================================*/
 
-App.blogEffects=function(){
+App.blogEffects = function () {
 
-const cards=document.querySelectorAll(".blog-card");
+    const cards = document.querySelectorAll(".blog-card");
 
-cards.forEach(card=>{
+    cards.forEach(card => {
 
-card.addEventListener("mouseenter",()=>{
+        card.addEventListener("mouseenter", () => {
 
-card.style.transform="translateY(-8px)";
+            card.style.transform = "translateY(-8px)";
 
-});
+        });
 
-card.addEventListener("mouseleave",()=>{
+        card.addEventListener("mouseleave", () => {
 
-card.style.transform="";
+            card.style.transform = "";
 
-});
+        });
 
-});
+    });
 
 };
 
@@ -1272,19 +1272,19 @@ card.style.transform="";
         IMAGE FALLBACK
 =========================================================*/
 
-App.blogFallback=function(){
+App.blogFallback = function () {
 
-const images=document.querySelectorAll(".blog-card img");
+    const images = document.querySelectorAll(".blog-card img");
 
-images.forEach(img=>{
+    images.forEach(img => {
 
-img.onerror=function(){
+        img.onerror = function () {
 
-this.src="images/placeholder.jpg";
+            this.src = "images/placeholder.jpg";
 
-};
+        };
 
-});
+    });
 
 };
 
@@ -1296,21 +1296,21 @@ this.src="images/placeholder.jpg";
             READ MORE
 =========================================================*/
 
-App.readMore=function(){
+App.readMore = function () {
 
-const buttons=document.querySelectorAll(".read-more");
+    const buttons = document.querySelectorAll(".read-more");
 
-buttons.forEach(button=>{
+    buttons.forEach(button => {
 
-button.addEventListener("click",(e)=>{
+        button.addEventListener("click", (e) => {
 
-e.preventDefault();
+            e.preventDefault();
 
-alert("Blog Details Page Coming Soon.");
+            alert("Blog Details Page Coming Soon.");
 
-});
+        });
 
-});
+    });
 
 };
 
@@ -1322,31 +1322,31 @@ alert("Blog Details Page Coming Soon.");
             SEARCH BLOG
 =========================================================*/
 
-App.searchBlog=function(keyword){
+App.searchBlog = function (keyword) {
 
-const result=
+    const result =
 
-blogs.filter(blog=>
+        blogs.filter(blog =>
 
-blog.title
+            blog.title
 
-.toLowerCase()
+                .toLowerCase()
 
-.includes(
+                .includes(
 
-keyword.toLowerCase()
+                    keyword.toLowerCase()
 
-)
+                )
 
-);
+        );
 
-this.blogGrid.innerHTML=
+    this.blogGrid.innerHTML =
 
-result
+        result
 
-.map(blogTemplate)
+            .map(blogTemplate)
 
-.join("");
+            .join("");
 
 };
 
@@ -1358,19 +1358,19 @@ result
             UPDATE INIT
 =========================================================*/
 
-const previousInit=App.init;
+const previousInit = App.init;
 
-App.init=function(){
+App.init = function () {
 
-previousInit.call(this);
+    previousInit.call(this);
 
-this.renderBlogs();
+    this.renderBlogs();
 
-this.blogEffects();
+    this.blogEffects();
 
-this.blogFallback();
+    this.blogFallback();
 
-this.readMore();
+    this.readMore();
 
 };
 /*=========================================================
@@ -1385,65 +1385,65 @@ this.readMore();
 
 const pdfs = [
 
-{
-    id:1,
-    title:"Bank Math Shortcut",
-    category:"Math",
-    type:"Free",
-    size:"2.5 MB",
-    downloads:2456,
-    file:"#"
-},
+    {
+        id: 1,
+        title: "Bank Math Shortcut",
+        category: "Math",
+        type: "Free",
+        size: "2.5 MB",
+        downloads: 2456,
+        file: "#"
+    },
 
-{
-    id:2,
-    title:"English Vocabulary",
-    category:"English",
-    type:"Free",
-    size:"1.8 MB",
-    downloads:1890,
-    file:"#"
-},
+    {
+        id: 2,
+        title: "English Vocabulary",
+        category: "English",
+        type: "Free",
+        size: "1.8 MB",
+        downloads: 1890,
+        file: "#"
+    },
 
-{
-    id:3,
-    title:"BCS Premium Notes",
-    category:"BCS",
-    type:"Paid",
-    size:"8.2 MB",
-    downloads:640,
-    file:"#"
-},
+    {
+        id: 3,
+        title: "BCS Premium Notes",
+        category: "BCS",
+        type: "Paid",
+        size: "8.2 MB",
+        downloads: 640,
+        file: "#"
+    },
 
-{
-    id:4,
-    title:"Primary Question Bank",
-    category:"Primary",
-    type:"Paid",
-    size:"6.4 MB",
-    downloads:890,
-    file:"#"
-},
+    {
+        id: 4,
+        title: "Primary Question Bank",
+        category: "Primary",
+        type: "Paid",
+        size: "6.4 MB",
+        downloads: 890,
+        file: "#"
+    },
 
-{
-    id:5,
-    title:"GK Special PDF",
-    category:"GK",
-    type:"Free",
-    size:"3.1 MB",
-    downloads:3200,
-    file:"#"
-},
+    {
+        id: 5,
+        title: "GK Special PDF",
+        category: "GK",
+        type: "Free",
+        size: "3.1 MB",
+        downloads: 3200,
+        file: "#"
+    },
 
-{
-    id:6,
-    title:"Health Assistant Guide",
-    category:"Health",
-    type:"Paid",
-    size:"4.8 MB",
-    downloads:740,
-    file:"#"
-}
+    {
+        id: 6,
+        title: "Health Assistant Guide",
+        category: "Health",
+        type: "Paid",
+        size: "4.8 MB",
+        downloads: 740,
+        file: "#"
+    }
 
 ];
 
@@ -1453,9 +1453,9 @@ const pdfs = [
 // TEMPLATE
 //=========================================================
 
-function pdfTemplate(pdf){
+function pdfTemplate(pdf) {
 
-return `
+    return `
 
 <div class="pdf-card">
 
@@ -1469,7 +1469,7 @@ return `
 
 <div style="margin:10px 0;">
 
-<span class="${pdf.type==="Free"?"free":"paid"}">
+<span class="${pdf.type === "Free" ? "free" : "paid"}">
 
 ${pdf.type}
 
@@ -1489,7 +1489,7 @@ ${pdf.type}
 class="download-btn"
 onclick="downloadPDF(${pdf.id})">
 
-${pdf.type==="Paid" ? "🔒 Unlock" : "⬇ Download"}
+${pdf.type === "Paid" ? "🔒 Unlock" : "⬇ Download"}
 
 </button>
 
@@ -1517,15 +1517,15 @@ View
 // RENDER
 //=========================================================
 
-App.renderPDFs=function(list=pdfs){
+App.renderPDFs = function (list = pdfs) {
 
-const container=document.querySelector(".pdf-grid");
+    const container = document.querySelector(".pdf-grid");
 
-if(!container) return;
+    if (!container) return;
 
-container.innerHTML=
+    container.innerHTML =
 
-list.map(pdfTemplate).join("");
+        list.map(pdfTemplate).join("");
 
 };
 
@@ -1536,21 +1536,21 @@ list.map(pdfTemplate).join("");
 // SEARCH
 //=========================================================
 
-App.searchPDF=function(keyword){
+App.searchPDF = function (keyword) {
 
-keyword=keyword.toLowerCase();
+    keyword = keyword.toLowerCase();
 
-const result=
+    const result =
 
-pdfs.filter(pdf=>
+        pdfs.filter(pdf =>
 
-pdf.title.toLowerCase().includes(keyword) ||
+            pdf.title.toLowerCase().includes(keyword) ||
 
-pdf.category.toLowerCase().includes(keyword)
+            pdf.category.toLowerCase().includes(keyword)
 
-);
+        );
 
-App.renderPDFs(result);
+    App.renderPDFs(result);
 
 };
 
@@ -1561,33 +1561,33 @@ App.renderPDFs(result);
 // BUTTON ACTIONS
 //=========================================================
 
-function downloadPDF(id){
+function downloadPDF(id) {
 
-const pdf=pdfs.find(item=>item.id===id);
+    const pdf = pdfs.find(item => item.id === id);
 
-if(!pdf) return;
+    if (!pdf) return;
 
-if(pdf.type==="Paid"){
+    if (pdf.type === "Paid") {
 
-alert("Please purchase this PDF.");
+        alert("Please purchase this PDF.");
 
-return;
+        return;
+
+    }
+
+    alert("Downloading: " + pdf.title);
 
 }
 
-alert("Downloading: "+pdf.title);
-
-}
 
 
+function viewPDF(id) {
 
-function viewPDF(id){
+    const pdf = pdfs.find(item => item.id === id);
 
-const pdf=pdfs.find(item=>item.id===id);
+    if (!pdf) return;
 
-if(!pdf) return;
-
-alert("Opening: "+pdf.title);
+    alert("Opening: " + pdf.title);
 
 }
 
@@ -1598,13 +1598,13 @@ alert("Opening: "+pdf.title);
 // INIT
 //=========================================================
 
-const initPDF=App.init;
+const initPDF = App.init;
 
-App.init=function(){
+App.init = function () {
 
-initPDF.call(this);
+    initPDF.call(this);
 
-this.renderPDFs();
+    this.renderPDFs();
 
 };
 
@@ -1620,41 +1620,41 @@ this.renderPDFs();
 
 const videos = [
 
-{
-    id:1,
-    title:"Bank Math Live Class",
-    thumbnail:"images/video1.jpg",
-    duration:"25:10",
-    views:"12K",
-    url:"#"
-},
+    {
+        id: 1,
+        title: "Bank Math Live Class",
+        thumbnail: "images/video1.jpg",
+        duration: "25:10",
+        views: "12K",
+        url: "#"
+    },
 
-{
-    id:2,
-    title:"English Grammar Class",
-    thumbnail:"images/video2.jpg",
-    duration:"18:40",
-    views:"8K",
-    url:"#"
-},
+    {
+        id: 2,
+        title: "English Grammar Class",
+        thumbnail: "images/video2.jpg",
+        duration: "18:40",
+        views: "8K",
+        url: "#"
+    },
 
-{
-    id:3,
-    title:"GK Marathon",
-    thumbnail:"images/video3.jpg",
-    duration:"32:15",
-    views:"20K",
-    url:"#"
-},
+    {
+        id: 3,
+        title: "GK Marathon",
+        thumbnail: "images/video3.jpg",
+        duration: "32:15",
+        views: "20K",
+        url: "#"
+    },
 
-{
-    id:4,
-    title:"BCS Math Practice",
-    thumbnail:"images/video4.jpg",
-    duration:"15:25",
-    views:"6K",
-    url:"#"
-}
+    {
+        id: 4,
+        title: "BCS Math Practice",
+        thumbnail: "images/video4.jpg",
+        duration: "15:25",
+        views: "6K",
+        url: "#"
+    }
 
 ];
 
@@ -1664,9 +1664,9 @@ const videos = [
 // VIDEO TEMPLATE
 //=========================================================
 
-function videoTemplate(video){
+function videoTemplate(video) {
 
-return `
+    return `
 
 <div class="video-card">
 
@@ -1713,15 +1713,15 @@ onclick="playVideo('${video.url}')">
 // RENDER VIDEOS
 //=========================================================
 
-App.renderVideos=function(){
+App.renderVideos = function () {
 
-const container=document.querySelector(".video-grid");
+    const container = document.querySelector(".video-grid");
 
-if(!container) return;
+    if (!container) return;
 
-container.innerHTML=
+    container.innerHTML =
 
-videos.map(videoTemplate).join("");
+        videos.map(videoTemplate).join("");
 
 };
 
@@ -1732,11 +1732,11 @@ videos.map(videoTemplate).join("");
 // WATCH BUTTON
 //=========================================================
 
-function playVideo(url){
+function playVideo(url) {
 
-alert("Opening YouTube Video...");
+    alert("Opening YouTube Video...");
 
-// window.open(url,"_blank");
+    // window.open(url,"_blank");
 
 }
 
@@ -1748,37 +1748,37 @@ alert("Opening YouTube Video...");
 // EXAM ROUTINE DATA
 //=========================================================
 
-const routines=[
+const routines = [
 
-{
-date:"04 Aug",
-course:"Bank Job",
-time:"8:00 PM"
-},
+    {
+        date: "04 Aug",
+        course: "Bank Job",
+        time: "8:00 PM"
+    },
 
-{
-date:"05 Aug",
-course:"Primary",
-time:"7:30 PM"
-},
+    {
+        date: "05 Aug",
+        course: "Primary",
+        time: "7:30 PM"
+    },
 
-{
-date:"06 Aug",
-course:"BCS Math",
-time:"9:00 PM"
-},
+    {
+        date: "06 Aug",
+        course: "BCS Math",
+        time: "9:00 PM"
+    },
 
-{
-date:"07 Aug",
-course:"Health",
-time:"8:30 PM"
-},
+    {
+        date: "07 Aug",
+        course: "Health",
+        time: "8:30 PM"
+    },
 
-{
-date:"08 Aug",
-course:"GK Mock",
-time:"8:00 PM"
-}
+    {
+        date: "08 Aug",
+        course: "GK Mock",
+        time: "8:00 PM"
+    }
 
 ];
 
@@ -1789,13 +1789,13 @@ time:"8:00 PM"
 // RENDER ROUTINE
 //=========================================================
 
-App.renderRoutine=function(){
+App.renderRoutine = function () {
 
-const box=document.querySelector(".routine-table");
+    const box = document.querySelector(".routine-table");
 
-if(!box) return;
+    if (!box) return;
 
-let html=`
+    let html = `
 
 <table>
 
@@ -1817,9 +1817,9 @@ let html=`
 
 `;
 
-routines.forEach(item=>{
+    routines.forEach(item => {
 
-html+=`
+        html += `
 
 <tr>
 
@@ -1833,9 +1833,9 @@ html+=`
 
 `;
 
-});
+    });
 
-html+=`
+    html += `
 
 </tbody>
 
@@ -1843,7 +1843,7 @@ html+=`
 
 `;
 
-box.innerHTML=html;
+    box.innerHTML = html;
 
 };
 
@@ -1854,15 +1854,15 @@ box.innerHTML=html;
 // FINAL INIT
 //=========================================================
 
-const previousAppInit=App.init;
+const previousAppInit = App.init;
 
-App.init=function(){
+App.init = function () {
 
-previousAppInit.call(this);
+    previousAppInit.call(this);
 
-this.renderVideos();
+    this.renderVideos();
 
-this.renderRoutine();
+    this.renderRoutine();
 
 };
 
@@ -1885,23 +1885,23 @@ console.log("Videos & Routine Loaded");
 // SMOOTH SCROLL
 //=========================================================
 
-document.querySelectorAll('a[href^="#"]').forEach(link=>{
+document.querySelectorAll('a[href^="#"]').forEach(link => {
 
-link.addEventListener("click",function(e){
+    link.addEventListener("click", function (e) {
 
-const target=document.querySelector(this.getAttribute("href"));
+        const target = document.querySelector(this.getAttribute("href"));
 
-if(!target) return;
+        if (!target) return;
 
-e.preventDefault();
+        e.preventDefault();
 
-target.scrollIntoView({
+        target.scrollIntoView({
 
-behavior:"smooth"
+            behavior: "smooth"
 
-});
+        });
 
-});
+    });
 
 });
 
@@ -1912,35 +1912,35 @@ behavior:"smooth"
 // SCROLL TO TOP
 //=========================================================
 
-const scrollBtn=document.querySelector(".scrollTop");
+const scrollBtn = document.querySelector(".scrollTop");
 
-window.addEventListener("scroll",()=>{
+window.addEventListener("scroll", () => {
 
-if(window.scrollY>500){
+    if (window.scrollY > 500) {
 
-scrollBtn.classList.add("show");
+        scrollBtn.classList.add("show");
 
-}else{
+    } else {
 
-scrollBtn.classList.remove("show");
+        scrollBtn.classList.remove("show");
 
-}
-
-});
-
-if(scrollBtn){
-
-scrollBtn.onclick=()=>{
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
+    }
 
 });
 
-};
+if (scrollBtn) {
+
+    scrollBtn.onclick = () => {
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+    };
 
 }
 
@@ -1951,19 +1951,19 @@ behavior:"smooth"
 // STICKY HEADER SHADOW
 //=========================================================
 
-const header=document.querySelector(".header");
+const header = document.querySelector(".header");
 
-window.addEventListener("scroll",()=>{
+window.addEventListener("scroll", () => {
 
-if(window.scrollY>20){
+    if (window.scrollY > 20) {
 
-header.style.boxShadow="0 8px 25px rgba(0,0,0,.08)";
+        header.style.boxShadow = "0 8px 25px rgba(0,0,0,.08)";
 
-}else{
+    } else {
 
-header.style.boxShadow="";
+        header.style.boxShadow = "";
 
-}
+    }
 
 });
 
@@ -1974,17 +1974,17 @@ header.style.boxShadow="";
 // BOTTOM NAV ACTIVE
 //=========================================================
 
-document.querySelectorAll(".bottom-nav a").forEach(item=>{
+document.querySelectorAll(".bottom-nav a").forEach(item => {
 
-item.addEventListener("click",()=>{
+    item.addEventListener("click", () => {
 
-document.querySelectorAll(".bottom-nav a")
+        document.querySelectorAll(".bottom-nav a")
 
-.forEach(nav=>nav.classList.remove("active"));
+            .forEach(nav => nav.classList.remove("active"));
 
-item.classList.add("active");
+        item.classList.add("active");
 
-});
+    });
 
 });
 
@@ -1995,11 +1995,11 @@ item.classList.add("active");
 // MOBILE MENU
 //=========================================================
 
-const menuBtn=document.querySelector(".menu-btn");
+const menuBtn = document.querySelector(".menu-btn");
 
-menuBtn?.addEventListener("click",()=>{
+menuBtn?.addEventListener("click", () => {
 
-alert("Sidebar/Menu Coming Soon");
+    alert("Sidebar/Menu Coming Soon");
 
 });
 
@@ -2010,19 +2010,19 @@ alert("Sidebar/Menu Coming Soon");
 // SEARCH
 //=========================================================
 
-const searchBtn=document.querySelector(".ri-search-line")?.parentElement;
+const searchBtn = document.querySelector(".ri-search-line")?.parentElement;
 
-searchBtn?.addEventListener("click",()=>{
+searchBtn?.addEventListener("click", () => {
 
-const keyword=prompt("Search Course, PDF, Blog...");
+    const keyword = prompt("Search Course, PDF, Blog...");
 
-if(!keyword) return;
+    if (!keyword) return;
 
-// Search Blog
-if(App.searchBlog) App.searchBlog(keyword);
+    // Search Blog
+    if (App.searchBlog) App.searchBlog(keyword);
 
-// Search PDF
-if(App.searchPDF) App.searchPDF(keyword);
+    // Search PDF
+    if (App.searchPDF) App.searchPDF(keyword);
 
 });
 
@@ -2033,25 +2033,25 @@ if(App.searchPDF) App.searchPDF(keyword);
 // DARK MODE
 //=========================================================
 
-function enableDarkMode(){
+function enableDarkMode() {
 
-document.body.classList.toggle("dark");
+    document.body.classList.toggle("dark");
 
-localStorage.setItem(
+    localStorage.setItem(
 
-"theme",
+        "theme",
 
-document.body.classList.contains("dark")
+        document.body.classList.contains("dark")
 
-);
+    );
 
 }
 
-const savedTheme=localStorage.getItem("theme");
+const savedTheme = localStorage.getItem("theme");
 
-if(savedTheme==="true"){
+if (savedTheme === "true") {
 
-document.body.classList.add("dark");
+    document.body.classList.add("dark");
 
 }
 
@@ -2059,7 +2059,7 @@ document.body.classList.add("dark");
 
 document.querySelector(".logo")
 
-?.addEventListener("dblclick",enableDarkMode);
+    ?.addEventListener("dblclick", enableDarkMode);
 
 
 
@@ -2068,31 +2068,31 @@ document.querySelector(".logo")
 // INTERSECTION OBSERVER
 //=========================================================
 
-const observer=new IntersectionObserver(entries=>{
+const observer = new IntersectionObserver(entries => {
 
-entries.forEach(entry=>{
+    entries.forEach(entry => {
 
-if(entry.isIntersecting){
+        if (entry.isIntersecting) {
 
-entry.target.classList.add("show");
+            entry.target.classList.add("show");
 
-}
+        }
 
-});
+    });
 
-},{
+}, {
 
-threshold:.15
+    threshold: .15
 
 });
 
 document.querySelectorAll(
 
-".fade-up"
+    ".fade-up"
 
-).forEach(el=>{
+).forEach(el => {
 
-observer.observe(el);
+    observer.observe(el);
 
 });
 
@@ -2103,61 +2103,61 @@ observer.observe(el);
 // BUTTON RIPPLE
 //=========================================================
 
-document.querySelectorAll("button").forEach(btn=>{
+document.querySelectorAll("button").forEach(btn => {
 
-btn.addEventListener("click",function(e){
+    btn.addEventListener("click", function (e) {
 
-const ripple=document.createElement("span");
+        const ripple = document.createElement("span");
 
-const size=Math.max(
+        const size = Math.max(
 
-this.clientWidth,
+            this.clientWidth,
 
-this.clientHeight
+            this.clientHeight
 
-);
+        );
 
-ripple.style.width=size+"px";
+        ripple.style.width = size + "px";
 
-ripple.style.height=size+"px";
+        ripple.style.height = size + "px";
 
-ripple.style.position="absolute";
+        ripple.style.position = "absolute";
 
-ripple.style.left=
+        ripple.style.left =
 
-e.offsetX-size/2+"px";
+            e.offsetX - size / 2 + "px";
 
-ripple.style.top=
+        ripple.style.top =
 
-e.offsetY-size/2+"px";
+            e.offsetY - size / 2 + "px";
 
-ripple.style.background="rgba(255,255,255,.35)";
+        ripple.style.background = "rgba(255,255,255,.35)";
 
-ripple.style.borderRadius="50%";
+        ripple.style.borderRadius = "50%";
 
-ripple.style.transform="scale(0)";
+        ripple.style.transform = "scale(0)";
 
-ripple.style.pointerEvents="none";
+        ripple.style.pointerEvents = "none";
 
-ripple.style.transition=".6s";
+        ripple.style.transition = ".6s";
 
-this.appendChild(ripple);
+        this.appendChild(ripple);
 
-requestAnimationFrame(()=>{
+        requestAnimationFrame(() => {
 
-ripple.style.transform="scale(3)";
+            ripple.style.transform = "scale(3)";
 
-ripple.style.opacity="0";
+            ripple.style.opacity = "0";
 
-});
+        });
 
-setTimeout(()=>{
+        setTimeout(() => {
 
-ripple.remove();
+            ripple.remove();
 
-},600);
+        }, 600);
 
-});
+    });
 
 });
 
@@ -2168,9 +2168,9 @@ ripple.remove();
 // LOADING EFFECT
 //=========================================================
 
-window.addEventListener("load",()=>{
+window.addEventListener("load", () => {
 
-document.body.classList.add("loaded");
+    document.body.classList.add("loaded");
 
 });
 
@@ -2181,11 +2181,11 @@ document.body.classList.add("loaded");
 // WELCOME MESSAGE
 //=========================================================
 
-setTimeout(()=>{
+setTimeout(() => {
 
-console.log("🎉 Jakir Sir SMART Edu Portal Ready");
+    console.log("🎉 Jakir Sir SMART Edu Portal Ready");
 
-},500);
+}, 500);
 
 
 
@@ -2194,7 +2194,7 @@ console.log("🎉 Jakir Sir SMART Edu Portal Ready");
 // OPTIONAL DARK MODE CSS
 //=========================================================
 
-const darkCSS=`
+const darkCSS = `
 
 body.dark{
 
@@ -2236,9 +2236,9 @@ color:#60A5FA;
 
 `;
 
-const style=document.createElement("style");
+const style = document.createElement("style");
 
-style.innerHTML=darkCSS;
+style.innerHTML = darkCSS;
 
 document.head.appendChild(style);
 
@@ -2251,8 +2251,8 @@ document.head.appendChild(style);
 
 console.log(
 
-"%cJakir Sir SMART Edu Portal Loaded Successfully 🚀",
+    "%cJakir Sir SMART Edu Portal Loaded Successfully 🚀",
 
-"color:#2563EB;font-size:16px;font-weight:bold"
+    "color:#2563EB;font-size:16px;font-weight:bold"
 
 );
