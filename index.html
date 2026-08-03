@@ -182,13 +182,245 @@
 
         </div>
 
-        <button>
+        <button id="enrollBtn">
 
             এখনই ভর্তি হন
 
         </button>
 
     </section>
+
+    <!-- ===================================================== -->
+    <!-- Enrollment Modal -->
+    <!-- ===================================================== -->
+
+    <div class="enroll-modal" id="enrollModal">
+
+        <div class="enroll-modal-content">
+
+            <!-- Step 1: Select Category -->
+            <div id="enrollStep1" class="enroll-step">
+
+                <div class="enroll-header">
+
+                    <h3>কোর্স নির্বাচন করুন</h3>
+
+                    <button class="enroll-close" id="enrollClose">&times;</button>
+
+                </div>
+
+                <div class="enroll-body">
+
+                    <p class="enroll-desc">আপনার পছন্দের চাকরির বিভাগ নির্বাচন করুন</p>
+
+                    <div class="enroll-category" data-category="bank">
+
+                        <div class="enroll-cat-icon"><i class="ri-bank-line"></i></div>
+
+                        <div class="enroll-cat-info">
+
+                            <h4>ব্যাংক</h4>
+
+                            <span>Bank Job</span>
+
+                        </div>
+
+                        <i class="ri-arrow-right-s-line enroll-cat-arrow"></i>
+
+                    </div>
+
+                    <div class="enroll-category" data-category="primary">
+
+                        <div class="enroll-cat-icon"><i class="ri-school-line"></i></div>
+
+                        <div class="enroll-cat-info">
+
+                            <h4>প্রাথমিক শিক্ষক</h4>
+
+                            <span>Primary Teacher</span>
+
+                        </div>
+
+                        <i class="ri-arrow-right-s-line enroll-cat-arrow"></i>
+
+                    </div>
+
+                    <div class="enroll-category" data-category="somajseba">
+
+                        <div class="enroll-cat-icon"><i class="ri-heart-pulse-line"></i></div>
+
+                        <div class="enroll-cat-info">
+
+                            <h4>সমাজসেবা</h4>
+
+                            <span>Somaj Seba</span>
+
+                        </div>
+
+                        <i class="ri-arrow-right-s-line enroll-cat-arrow"></i>
+
+                    </div>
+
+                    <div class="enroll-category" data-category="nibondhon">
+
+                        <div class="enroll-cat-icon"><i class="ri-graduation-cap-line"></i></div>
+
+                        <div class="enroll-cat-info">
+
+                            <h4>শিক্ষক নিবন্ধন</h4>
+
+                            <span>Shikhok Nibondhon</span>
+
+                        </div>
+
+                        <i class="ri-arrow-right-s-line enroll-cat-arrow"></i>
+
+                    </div>
+
+                    <div class="enroll-category" data-category="bcs">
+
+                        <div class="enroll-cat-icon"><i class="ri-global-line"></i></div>
+
+                        <div class="enroll-cat-info">
+
+                            <h4>BCS</h4>
+
+                            <span>BCS Exam</span>
+
+                        </div>
+
+                        <i class="ri-arrow-right-s-line enroll-cat-arrow"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Step 2: Select Course -->
+            <div id="enrollStep2" class="enroll-step" style="display:none">
+
+                <div class="enroll-header">
+
+                    <button class="enroll-back" id="enrollBack2">&larr;</button>
+
+                    <h3 id="enrollCatTitle">কোর্স নির্বাচন</h3>
+
+                    <button class="enroll-close" id="enrollClose2">&times;</button>
+
+                </div>
+
+                <div class="enroll-body" id="enrollCourseList">
+
+                    <!-- Courses dynamically inserted -->
+
+                </div>
+
+            </div>
+
+            <!-- Step 3: Payment -->
+            <div id="enrollStep3" class="enroll-step" style="display:none">
+
+                <div class="enroll-header">
+
+                    <button class="enroll-back" id="enrollBack3">&larr;</button>
+
+                    <h3>পেমেন্ট</h3>
+
+                    <button class="enroll-close" id="enrollClose3">&times;</button>
+
+                </div>
+
+                <div class="enroll-body">
+
+                    <div class="payment-order" id="paymentOrder"></div>
+
+                    <!-- Payment Methods -->
+                    <div class="payment-methods">
+
+                        <button class="payment-method" data-method="bkash">
+
+                            <span class="pm-icon bkash-icon">৳</span>
+
+                            <span>bKash</span>
+
+                        </button>
+
+                        <button class="payment-method" data-method="nagad">
+
+                            <span class="pm-icon nagad-icon">৳</span>
+
+                            <span>Nagad</span>
+
+                        </button>
+
+                        <button class="payment-method" data-method="sslcommerz" disabled>
+
+                            <span class="pm-icon ssl-icon"><i class="ri-lock-line"></i></span>
+
+                            <span>SSLCommerz</span>
+
+                            <small class="pm-disabled-tag">Coming Soon</small>
+
+                        </button>
+
+                    </div>
+
+                    <!-- Manual Payment Form -->
+                    <div id="manualPayment" class="manual-payment" style="display:none">
+
+                        <div class="manual-info">
+
+                            <i class="ri-information-line"></i>
+
+                            <p>১মে কোর্স ফি <strong id="payAmount">৳0</strong> নিচের নম্বরে পাঠান। তারপর TRX ID দিয়ে সাবমিট করুন।</p>
+
+                        </div>
+
+                        <div class="manual-phone">
+
+                            <i class="ri-phone-line"></i>
+
+                            <span>+880 1700-000000 (bKash / Nagad)</span>
+
+                        </div>
+
+                        <input type="text" id="trxId" placeholder="TRX ID লিখুন (যেমন: 9HK7X2D8)" class="payment-input">
+
+                        <button id="paymentSubmitBtn" class="payment-submit-btn">সাবমিট করুন ✅</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Step 4: Success -->
+            <div id="enrollStep4" class="enroll-step" style="display:none">
+
+                <div class="enroll-success">
+
+                    <div class="success-icon">✅</div>
+
+                    <h3>অভিনন্দন Jakir!</h3>
+
+                    <p>আপনার ভর্তির আবেদন সফলভাবে জমা হয়েছে।</p>
+
+                    <div class="success-box">
+
+                        <p>📢 ২৪ ঘণ্টার মধ্যে আমাদের টিম মেইল ও কলের মাধ্যমে আপনার ভর্তি নিশ্চিত করবে।</p>
+
+                    </div>
+
+                    <button id="enrollDoneBtn" class="enroll-done-btn">ঠিক আছে</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
     <!-- ===================================================== -->
     <!-- Popular Courses -->

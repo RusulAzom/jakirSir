@@ -160,6 +160,179 @@ App.initPopularSwiper = function () {
 
 
 /*=========================================================
+            ENROLLMENT MODAL
+=========================================================*/
+
+App.initEnrollment = function () {
+
+    // Courses by category
+    const coursesByCategory = {
+        bank: [
+            { name: "Bank MCQ + Written Combo", price: 2499 },
+            { name: "Bank Math Crash Course", price: 1499 },
+            { name: "Bank English Paid Course", price: 1299 },
+            { name: "Bank GK & Computer", price: 999 }
+        ],
+        primary: [
+            { name: "Primary Teacher Complete", price: 1499 },
+            { name: "Primary Math Masterclass", price: 999 },
+            { name: "Primary English Course", price: 899 },
+            { name: "Primary Question Bank Pack", price: 799 }
+        ],
+        somajseba: [
+            { name: "Somaj Seba Complete Batch", price: 1699 },
+            { name: "Shastho Sohokari Course", price: 1499 },
+            { name: "Somaj Seba Question Bank", price: 899 }
+        ],
+        nibondhon: [
+            { name: "Shikhok Nibondhon Complete", price: 1999 },
+            { name: "Sebamulok Nibondhon Course", price: 1799 },
+            { name: "Nibondhon Online Crash", price: 1299 }
+        ],
+        bcs: [
+            { name: "BCS Math Crash Course", price: 1299 },
+            { name: "BCS GK Premium", price: 899 },
+            { name: "BCS English Course", price: 1099 },
+            { name: "BCS Full Package", price: 2999 }
+        ]
+    };
+
+    // Category titles
+    const categoryTitles = {
+        bank: "ব্যাংক কোর্স সমূহ",
+        primary: "প্রাথমিক শিক্ষক কোর্স সমূহ",
+        somajseba: "সমাজসেবা কোর্স সমূহ",
+        nibondhon: "শিক্ষক নিবন্ধন কোর্স সমূহ",
+        bcs: "BCS কোর্স সমূহ"
+    };
+
+    // DOM refs
+    const modal = document.getElementById("enrollModal");
+    const enrollBtn = document.getElementById("enrollBtn");
+    const step1 = document.getElementById("enrollStep1");
+    const step2 = document.getElementById("enrollStep2");
+    const step3 = document.getElementById("enrollStep3");
+    const step4 = document.getElementById("enrollStep4");
+    const courseList = document.getElementById("enrollCourseList");
+    const catTitle = document.getElementById("enrollCatTitle");
+
+    let selectedCourse = null;
+    let selectedMethod = null;
+    let currentStep = 1;
+
+    // Show modal
+    function openModal() {
+        modal.classList.add("show");
+        goToStep(1);
+    }
+
+    // Close modal
+    function closeModal() {
+        modal.classList.remove("show");
+        // Reset
+        selectedCourse = null;
+        selectedMethod = null;
+        document.getElementById("manualPayment").style.display = "none";
+        document.querySelectorAll(".payment-method").forEach(m => m.classList.remove("active"));
+        document.getElementById("trxId").value = "";
+    }
+
+    // Navigate steps
+    function goToStep(step) {
+        currentStep = step;
+        step1.style.display = step === 1 ? "block" : "none";
+        step2.style.display = step === 2 ? "block" : "none";
+        step3.style.display = step === 3 ? "block" : "none";
+        step4.style.display = step === 4 ? "block" : "none";
+    }
+
+    // Open modal on CTA button click
+    enrollBtn.addEventListener("click", openModal);
+
+    // Close buttons
+    document.getElementById("enrollClose").addEventListener("click", closeModal);
+    document.getElementById("enrollClose2").addEventListener("click", closeModal);
+    document.getElementById("enrollClose3").addEventListener("click", closeModal);
+
+    // Back buttons
+    document.getElementById("enrollBack2").addEventListener("click", () => goToStep(1));
+    document.getElementById("enrollBack3").addEventListener("click", () => goToStep(2));
+
+    // Close on backdrop click
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    // Category selection
+    document.querySelectorAll(".enroll-category").forEach(cat => {
+        cat.addEventListener("click", () => {
+            const category = cat.dataset.category;
+            catTitle.textContent = categoryTitles[category] || "কোর্স নির্বাচন";
+
+            // Render courses
+            courseList.innerHTML = "";
+            (coursesByCategory[category] || []).forEach(course => {
+                const item = document.createElement("div");
+                item.className = "enroll-course-item";
+                item.innerHTML = `
+                    <div class="enroll-course-name">${course.name}</div>
+                    <div class="enroll-course-price">৳${course.price}</div>
+                `;
+                item.addEventListener("click", () => {
+                    selectedCourse = course;
+                    // Show payment step
+                    document.getElementById("paymentOrder").innerHTML = `
+                        <p><strong>📚 কোর্স:</strong> ${course.name}</p>
+                        <p><strong>💰 ফি:</strong> ৳${course.price}</p>
+                    `;
+                    document.getElementById("payAmount").textContent = "৳" + course.price;
+                    document.getElementById("manualPayment").style.display = "none";
+                    document.querySelectorAll(".payment-method").forEach(m => m.classList.remove("active"));
+                    selectedMethod = null;
+                    goToStep(3);
+                });
+                courseList.appendChild(item);
+            });
+
+            goToStep(2);
+        });
+    });
+
+    // Payment method selection
+    document.querySelectorAll(".payment-method").forEach(method => {
+        method.addEventListener("click", () => {
+            if (method.disabled) return;
+            // Toggle active
+            document.querySelectorAll(".payment-method").forEach(m => m.classList.remove("active"));
+            method.classList.add("active");
+            selectedMethod = method.dataset.method;
+            // Show manual payment form for bKash/Nagad
+            document.getElementById("manualPayment").style.display = "block";
+        });
+    });
+
+    // Submit payment
+    document.getElementById("paymentSubmitBtn").addEventListener("click", () => {
+        const trxId = document.getElementById("trxId").value.trim();
+        if (!selectedMethod) {
+            alert("পেমেন্ট মেথড নির্বাচন করুন!");
+            return;
+        }
+        if (!trxId) {
+            alert("TRX ID লিখুন!");
+            return;
+        }
+        // Show success
+        goToStep(4);
+    });
+
+    // Done button
+    document.getElementById("enrollDoneBtn").addEventListener("click", closeModal);
+};
+
+
+
+/*=========================================================
             DEMO EXAM / QUIZ
 =========================================================*/
 
@@ -496,6 +669,8 @@ window.addEventListener(
     () => {
 
         App.init();
+
+        App.initEnrollment();
 
         App.initQuiz();
 
