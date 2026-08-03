@@ -385,6 +385,8 @@
 
                         </div>
 
+                        <input type="tel" id="senderMobile" placeholder="আপনার মোবাইল নম্বর লিখুন (যেমন: 017XXXXXXXX)" class="payment-input">
+
                         <input type="text" id="trxId" placeholder="TRX ID লিখুন (যেমন: 9HK7X2D8)" class="payment-input">
 
                         <button id="paymentSubmitBtn" class="payment-submit-btn">সাবমিট করুন ✅</button>
@@ -415,6 +417,110 @@
                     <button id="enrollDoneBtn" class="enroll-done-btn">ঠিক আছে</button>
 
                 </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- Course Info Modal -->
+    <!-- ===================================================== -->
+
+    <div class="course-info-modal" id="courseInfoModal">
+
+        <div class="course-info-content">
+
+            <div class="course-info-header">
+
+                <h3 id="courseInfoTitle">কোর্স তথ্য</h3>
+
+                <button class="course-info-close" id="courseInfoClose">&times;</button>
+
+            </div>
+
+            <div class="course-info-body">
+
+                <div class="course-info-name" id="courseInfoName"></div>
+
+                <div class="course-info-price" id="courseInfoPrice"></div>
+
+                <div class="course-info-list">
+
+                    <div class="course-info-item">
+
+                        <i class="ri-time-line"></i>
+
+                        <div>
+
+                            <strong>লাইভ ক্লাস</strong>
+
+                            <span>প্রতিদিন রাত ৮:০০ টায়</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="course-info-item">
+
+                        <i class="ri-calendar-check-line"></i>
+
+                        <div>
+
+                            <strong>ক্লাস দিন</strong>
+
+                            <span>রবি, মঙ্গল ও বুধবার</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="course-info-item">
+
+                        <i class="ri-hourglass-line"></i>
+
+                        <div>
+
+                            <strong>কোর্সের মেয়াদ</strong>
+
+                            <span>৩ মাস</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="course-info-item">
+
+                        <i class="ri-infinity-line"></i>
+
+                        <div>
+
+                            <strong>মক টেস্ট</strong>
+
+                            <span>আনলিমিটেড পরীক্ষা</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="course-info-item">
+
+                        <i class="ri-trophy-line"></i>
+
+                        <div>
+
+                            <strong>লিডারবোর্ড</strong>
+
+                            <span>সাপ্তাহিক মক টেস্ট পরীক্ষা</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button class="course-info-enroll-btn" id="courseInfoEnrollBtn">এখনই ভর্তি হন</button>
 
             </div>
 
@@ -472,7 +578,7 @@
 
                                 <div class="price">৳2499</div>
 
-                                <button class="details-btn">Details</button>
+                                <button class="details-btn enroll-now-btn" data-course="Bank Online Combo MCQ + Written" data-price="৳2499">Enroll Now</button>
 
                             </div>
 
@@ -513,7 +619,7 @@
 
                                 <div class="price">৳1299</div>
 
-                                <button class="details-btn">Details</button>
+                                <button class="details-btn enroll-now-btn" data-course="Bank Job English Paid Course" data-price="৳1299">Enroll Now</button>
 
                             </div>
 
@@ -554,7 +660,7 @@
 
                                 <div class="price">৳1999</div>
 
-                                <button class="details-btn">Details</button>
+                                <button class="details-btn enroll-now-btn" data-course="নিবন্ধন কোর্স" data-price="৳1999">Enroll Now</button>
 
                             </div>
 
@@ -595,7 +701,7 @@
 
                                 <div class="price">৳899</div>
 
-                                <button class="details-btn">Details</button>
+                                <button class="details-btn enroll-now-btn" data-course="সমাজসেবা ও স্বাস্থ্য সহকারী" data-price="৳899">Enroll Now</button>
 
                             </div>
 
@@ -636,7 +742,7 @@
 
                                 <div class="price">৳1099</div>
 
-                                <button class="details-btn">Details</button>
+                                <button class="details-btn enroll-now-btn" data-course="সেবামূলক নিবন্ধন কোর্স" data-price="৳1099">Enroll Now</button>
 
                             </div>
 

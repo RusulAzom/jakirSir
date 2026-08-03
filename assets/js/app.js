@@ -160,6 +160,59 @@ App.initPopularSwiper = function () {
 
 
 /*=========================================================
+            COURSE INFO MODAL
+=========================================================*/
+
+App.initCourseInfo = function () {
+
+    const modal = document.getElementById("courseInfoModal");
+    const closeBtn = document.getElementById("courseInfoClose");
+    const enrollBtn = document.getElementById("courseInfoEnrollBtn");
+    const nameEl = document.getElementById("courseInfoName");
+    const priceEl = document.getElementById("courseInfoPrice");
+
+    // Open course info modal on Enroll Now click
+    document.querySelectorAll(".enroll-now-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const courseName = btn.dataset.course || "কোর্স";
+            const coursePrice = btn.dataset.price || "৳0";
+            nameEl.textContent = courseName;
+            priceEl.textContent = coursePrice;
+            modal.classList.add("show");
+        });
+    });
+
+    // Close modal
+    closeBtn.addEventListener("click", () => {
+        modal.classList.remove("show");
+    });
+
+    // Close on backdrop click
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            modal.classList.remove("show");
+        }
+    });
+
+    // Enroll Now button - close info modal and open payment modal
+    enrollBtn.addEventListener("click", () => {
+        modal.classList.remove("show");
+        // Open the enrollment modal
+        const enrollModal = document.getElementById("enrollModal");
+        if (enrollModal) {
+            enrollModal.classList.add("show");
+            // Go to step 1
+            document.getElementById("enrollStep1").style.display = "block";
+            document.getElementById("enrollStep2").style.display = "none";
+            document.getElementById("enrollStep3").style.display = "none";
+            document.getElementById("enrollStep4").style.display = "none";
+        }
+    });
+};
+
+
+
+/*=========================================================
             ENROLLMENT MODAL
 =========================================================*/
 
@@ -235,6 +288,7 @@ App.initEnrollment = function () {
         document.getElementById("manualPayment").style.display = "none";
         document.querySelectorAll(".payment-method").forEach(m => m.classList.remove("active"));
         document.getElementById("trxId").value = "";
+        document.getElementById("senderMobile").value = "";
     }
 
     // Navigate steps
@@ -313,9 +367,18 @@ App.initEnrollment = function () {
 
     // Submit payment
     document.getElementById("paymentSubmitBtn").addEventListener("click", () => {
+        const senderMobile = document.getElementById("senderMobile").value.trim();
         const trxId = document.getElementById("trxId").value.trim();
         if (!selectedMethod) {
             alert("পেমেন্ট মেথড নির্বাচন করুন!");
+            return;
+        }
+        if (!senderMobile) {
+            alert("আপনার মোবাইল নম্বর লিখুন!");
+            return;
+        }
+        if (senderMobile.length < 11) {
+            alert("সঠিক মোবাইল নম্বর লিখুন!");
             return;
         }
         if (!trxId) {
@@ -669,6 +732,8 @@ window.addEventListener(
     () => {
 
         App.init();
+
+        App.initCourseInfo();
 
         App.initEnrollment();
 
