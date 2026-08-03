@@ -2498,6 +2498,463 @@ Responsive
 }
 
 /*==================================================
+            ABOUT JAKIR SIR
+==================================================*/
+
+.about-jakir {
+    background: linear-gradient(180deg, #F8FAFC 0%, #fff 100%);
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    max-width: 100%;
+}
+
+.about-image-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.about-image-bg {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    background: linear-gradient(135deg, #2563EB, #1D4ED8);
+    border-radius: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    opacity: 0.1;
+}
+
+.about-image {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 280px;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
+}
+
+.about-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.about-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+}
+
+.about-name {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.2;
+}
+
+.about-subtitle {
+    font-size: 16px;
+    color: var(--text-light);
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.about-description {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.about-description p {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.7;
+}
+
+/* Timeline */
+.about-timeline {
+    position: relative;
+    padding-left: 20px;
+}
+
+.about-timeline::before {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: #E2E8F0;
+}
+
+.about-timeline h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -20px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--primary);
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px var(--primary);
+}
+
+.timeline-content {
+    background: #fff;
+    border-radius: var(--radius-sm);
+    padding: 14px;
+    box-shadow: var(--shadow);
+}
+
+.timeline-badge {
+    display: inline-block;
+    background: #DCFCE7;
+    color: #15803D;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 6px;
+}
+
+.timeline-content h5 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.timeline-content p {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.timeline-content span {
+    font-size: 13px;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.timeline-content small {
+    font-size: 12px;
+    color: var(--text-light);
+    display: block;
+    margin-top: 2px;
+}
+
+/* Expertise */
+.about-expertise {
+    margin-top: 8px;
+}
+
+.about-expertise h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.expertise-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    transition: all .2s ease;
+}
+
+.expertise-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.expertise-card i {
+    font-size: 20px;
+    color: var(--primary);
+    line-height: 1;
+}
+
+.expertise-card span {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+}
+
+/* Trust */
+.about-trust {
+    margin-top: 8px;
+}
+
+.about-trust h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.trust-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #F8FAFC;
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+}
+
+.trust-item i {
+    font-size: 18px;
+    color: var(--success);
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.trust-item span {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.3;
+}
+
+/* Quote */
+.about-quote {
+    background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+    border-radius: var(--radius);
+    padding: 20px;
+    border-left: 4px solid var(--primary);
+}
+
+.about-quote i {
+    font-size: 32px;
+    color: var(--primary);
+    opacity: .3;
+    line-height: 1;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.about-quote p {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 8px;
+    font-style: italic;
+}
+
+.about-quote span {
+    font-size: 14px;
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+/* Stats */
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.about-stat {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 16px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform .2s ease;
+}
+
+.about-stat:hover {
+    transform: translateY(-3px);
+}
+
+.about-stat i {
+    font-size: 28px;
+    color: var(--primary);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.about-stat h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 4px;
+    line-height: 1.2;
+}
+
+.about-stat span {
+    font-size: 13px;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+/* Social */
+.about-social {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.social-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #EFF6FF;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    transition: all .2s ease;
+}
+
+.social-icon:hover {
+    background: var(--primary);
+    color: #fff;
+    transform: rotate(-10deg) scale(1.1);
+}
+
+/* CTA */
+.about-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.about-cta .btn {
+    width: 100%;
+    justify-content: center;
+}
+
+.about-cta .btn-outline {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.about-cta .btn-outline:hover {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* Desktop */
+@media(min-width:768px) {
+
+    .about-container {
+        grid-template-columns: 300px 1fr;
+        gap: 40px;
+    }
+
+    .about-image-wrapper {
+        position: sticky;
+        top: 80px;
+        height: fit-content;
+    }
+
+    .about-image {
+        max-width: 300px;
+        height: 360px;
+    }
+
+    .about-title {
+        font-size: 28px;
+    }
+
+    .about-name {
+        font-size: 32px;
+    }
+
+    .about-subtitle {
+        font-size: 17px;
+    }
+
+    .about-description p {
+        font-size: 16px;
+    }
+
+    .expertise-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .trust-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .about-stats {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .about-cta {
+        flex-direction: row;
+    }
+
+    .about-cta .btn {
+        flex: 1;
+    }
+
+    .about-social {
+        justify-content: flex-start;
+    }
+}
+
+@media(min-width:1200px) {
+
+    .about-container {
+        grid-template-columns: 320px 1fr;
+        gap: 50px;
+    }
+
+    .about-image {
+        max-width: 320px;
+        height: 400px;
+    }
+}
+
+/*==================================================
                 FOOTER
 ==================================================*/
 
