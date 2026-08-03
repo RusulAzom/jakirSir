@@ -710,7 +710,7 @@ const quickTools = [
 
     {
         title: "Vocabulary",
-        icon: "ri-spell-check-line",
+        icon: "ri-translate-2",
         color: "#9333EA",
         link: "#"
     },
@@ -1655,130 +1655,9 @@ App.init = function () {
 
 
 //=========================================================
-// VIDEO DATA
+// NOTE: Video section is hardcoded in index.html
+// (Prototype - YouTube embeds served directly)
 //=========================================================
-
-const videos = [
-
-    {
-        id: 1,
-        title: "Bank Math Live Class",
-        thumbnail: "images/video1.jpg",
-        duration: "25:10",
-        views: "12K",
-        url: "#"
-    },
-
-    {
-        id: 2,
-        title: "English Grammar Class",
-        thumbnail: "images/video2.jpg",
-        duration: "18:40",
-        views: "8K",
-        url: "#"
-    },
-
-    {
-        id: 3,
-        title: "GK Marathon",
-        thumbnail: "images/video3.jpg",
-        duration: "32:15",
-        views: "20K",
-        url: "#"
-    },
-
-    {
-        id: 4,
-        title: "BCS Math Practice",
-        thumbnail: "images/video4.jpg",
-        duration: "15:25",
-        views: "6K",
-        url: "#"
-    }
-
-];
-
-
-
-//=========================================================
-// VIDEO TEMPLATE
-//=========================================================
-
-function videoTemplate(video) {
-
-    return `
-
-<div class="video-card">
-
-<div class="video-thumb">
-
-<img src="${video.thumbnail}" alt="${video.title}">
-
-</div>
-
-<div class="video-info">
-
-<h4>${video.title}</h4>
-
-<div class="video-meta">
-
-<span>⏱ ${video.duration}</span>
-
-<span>👁 ${video.views}</span>
-
-</div>
-
-<br>
-
-<button
-class="download-btn"
-onclick="playVideo('${video.url}')">
-
-▶ Watch
-
-</button>
-
-</div>
-
-</div>
-
-`;
-
-}
-
-
-
-
-//=========================================================
-// RENDER VIDEOS
-//=========================================================
-
-App.renderVideos = function () {
-
-    const container = document.querySelector(".video-grid");
-
-    if (!container) return;
-
-    container.innerHTML =
-
-        videos.map(videoTemplate).join("");
-
-};
-
-
-
-
-//=========================================================
-// WATCH BUTTON
-//=========================================================
-
-function playVideo(url) {
-
-    alert("Opening YouTube Video...");
-
-    // window.open(url,"_blank");
-
-}
 
 
 
@@ -1899,8 +1778,6 @@ const previousAppInit = App.init;
 App.init = function () {
 
     previousAppInit.call(this);
-
-    this.renderVideos();
 
     this.renderRoutine();
 

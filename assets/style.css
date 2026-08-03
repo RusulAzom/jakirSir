@@ -244,29 +244,15 @@ Header
 .logo {
     display: flex;
     align-items: center;
-    gap: 8px;
-    min-width: 0;
-}
-
-.logo img {
-    width: 36px;
-    height: 36px;
-    object-fit: contain;
+    justify-content: center;
     flex-shrink: 0;
 }
 
-.logo h2 {
-    font-size: 18px;
-    line-height: 1.1;
-    color: var(--primary);
-    white-space: nowrap;
-}
-
-.logo span {
-    font-size: 11px;
-    color: var(--text-light);
-    display: block;
-    white-space: nowrap;
+.logo img {
+    width: 78px;
+    height: 78px;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 .header-icons {
@@ -1298,60 +1284,21 @@ Responsive
     transform: translateY(-4px);
 }
 
-.video-thumb {
+.video-embed {
     position: relative;
-    overflow: hidden;
-}
-
-.video-thumb img {
     width: 100%;
-    height: 100px;
-    object-fit: cover;
+    padding-top: 56.25%;
+    overflow: hidden;
+    background: #000;
 }
 
-.video-thumb::after {
-    content: "▶";
+.video-embed iframe {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #FF0000;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    line-height: 1;
-}
-
-.video-info {
-    padding: 12px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-
-.video-info h4 {
-    font-size: 14px;
-    line-height: 1.4;
-    margin-bottom: 6px;
-}
-
-.video-meta {
-    display: flex;
-    justify-content: space-between;
-    color: var(--text-light);
-    font-size: 11px;
-    margin-bottom: 10px;
-}
-
-.video-meta span {
-    display: inline-flex;
-    align-items: center;
-    gap: 3px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 
 /*==================================================
@@ -1390,8 +1337,8 @@ Responsive
         height: 140px;
     }
 
-    .video-thumb img {
-        height: 130px;
+    .video-embed {
+        padding-top: 56.25%;
     }
 
 }
