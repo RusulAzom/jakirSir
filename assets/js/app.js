@@ -160,6 +160,178 @@ App.initPopularSwiper = function () {
 
 
 /*=========================================================
+            DEMO EXAM / QUIZ
+=========================================================*/
+
+App.initQuiz = function () {
+
+    // Question Bank - Bangla, English, Math mixed
+    const questionBank = [
+        // Bangla Questions
+        { q: "বাংলাদেশের স্বাধীনতা ঘোষণা করা হয় কত সালে?", options: ["১৯৬৯", "১৯৭১", "১৯৭৫", "১৯৮০"], answer: 1 },
+        { q: "বাংলা নববর্ষ পহেলা বৈশাখ কোন মাসে পালিত হয়?", options: ["চৈত্র", "বৈশাখ", "আষাঢ়", "ফাল্গুন"], answer: 1 },
+        { q: "জাতীয় কবি কাজী নজরুল ইসলামের জন্ম কোন জেলায়?", options: ["চুরুলিয়া", "বর্ধমান", "ঢাকা", "চট্টগ্রাম"], answer: 0 },
+        { q: "'আমার সোনার বাংলা' গানটি কার লেখা?", options: ["রবীন্দ্রনাথ ঠাকুর", "কাজী নজরুল ইসলাম", "জসীমউদ্দীন", "সুকান্ত ভট্টাচার্য"], answer: 0 },
+        { q: "বাংলাদেশের জাতীয় ফুল কী?", options: ["গোলাপ", "পদ্ম", "শাপলা", "সূর্যমুখী"], answer: 2 },
+        // English Questions
+        { q: "What is the synonym of 'Abundant'?", options: ["Scarce", "Plentiful", "Rare", "Empty"], answer: 1 },
+        { q: "Choose the correct spelling:", options: ["Recieve", "Receive", "Receeve", "Reciive"], answer: 1 },
+        { q: "What is the antonym of 'Brave'?", options: ["Courageous", "Bold", "Cowardly", "Heroic"], answer: 2 },
+        { q: "Fill in the blank: He ____ to school every day.", options: ["go", "goes", "going", "gone"], answer: 1 },
+        { q: "The opposite of 'Ancient' is:", options: ["Old", "Modern", "Aged", "Antique"], answer: 1 },
+        // Math Questions
+        { q: "১২ + ২৮ = ?", options: ["৩০", "৪০", "৫০", "৬০"], answer: 1 },
+        { q: "১৫ × ৬ = ?", options: ["৬০", "৭০", "৮০", "৯০"], answer: 3 },
+        { q: "১০০ ÷ ৪ = ?", options: ["২০", "২৫", "৩০", "৫০"], answer: 1 },
+        { q: "একটি ত্রিভুজের তিন কোণের সমষ্টি কত?", options: ["৯০°", "১৮০°", "২৭০°", "৩৬০°"], answer: 1 },
+        { q: "৫০ এর ২০% কত?", options: ["৫", "১০", "১৫", "২০"], answer: 1 },
+        { q: "৬৪ এর বর্গমূল কত?", options: ["৬", "৭", "৮", "৯"], answer: 2 },
+        { q: "পরবর্তী সংখ্যা: ২, ৪, ৬, ৮, ?", options: ["৯", "১০", "১১", "১২"], answer: 1 },
+        { q: "৪৫ + ৩৭ = ?", options: ["৭২", "৮২", "৯২", "১০২"], answer: 1 },
+        { q: "একটি ডজন = কতটি?", options: ["১০", "১২", "১৪", "১৬"], answer: 1 },
+        { q: "৯ ✕ ৯ = ?", options: ["৭৯", "৮১", "৮৯", "৯১"], answer: 1 }
+    ];
+
+    // DOM refs
+    const setupView = document.getElementById("examSetup");
+    const quizView = document.getElementById("quizView");
+    const resultView = document.getElementById("quizResult");
+    const startBtn = document.getElementById("startExamBtn");
+    const retryBtn = document.getElementById("retryBtn");
+    const questionEl = document.getElementById("quizQuestion");
+    const optionsEl = document.getElementById("quizOptions");
+    const progressEl = document.getElementById("quizProgress");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const submitBtn = document.getElementById("submitBtn");
+
+    let currentQuestions = [];
+    let currentIndex = 0;
+    let answers = [];
+    let score = 0;
+
+    // Shuffle and pick 10 random questions
+    function getRandomQuestions() {
+        const shuffled = [...questionBank].sort(() => Math.random() - 0.5);
+        return shuffled.slice(0, 10);
+    }
+
+    // Convert Bangla digits to English digits
+    function toBanglaNumber(num) {
+        const bn = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
+        return String(num).split("").map(d => bn[parseInt(d)] || d).join("");
+    }
+
+    // Render current question
+    function renderQuestion() {
+        const q = currentQuestions[currentIndex];
+        questionEl.textContent = (currentIndex + 1) + ". " + q.q;
+        progressEl.textContent = "প্রশ্ন " + toBanglaNumber(currentIndex + 1) + "/" + toBanglaNumber(currentQuestions.length);
+
+        optionsEl.innerHTML = "";
+        q.options.forEach((opt, i) => {
+            const btn = document.createElement("button");
+            btn.className = "quiz-option";
+            btn.textContent = String.fromCharCode(65 + i) + ". " + opt;
+            if (answers[currentIndex] !== undefined && answers[currentIndex] === i) {
+                btn.classList.add("selected");
+            }
+            btn.addEventListener("click", () => {
+                answers[currentIndex] = i;
+                renderQuestion();
+            });
+            optionsEl.appendChild(btn);
+        });
+
+        // Toggle nav buttons
+        prevBtn.style.display = currentIndex === 0 ? "none" : "flex";
+        if (currentIndex === currentQuestions.length - 1) {
+            nextBtn.style.display = "none";
+            submitBtn.style.display = "flex";
+        } else {
+            nextBtn.style.display = "flex";
+            submitBtn.style.display = "none";
+        }
+
+        // Disable next if no answer selected
+        nextBtn.disabled = answers[currentIndex] === undefined;
+        nextBtn.style.opacity = answers[currentIndex] === undefined ? ".4" : "1";
+    }
+
+    // Start exam
+    startBtn.addEventListener("click", () => {
+        currentQuestions = getRandomQuestions();
+        currentIndex = 0;
+        answers = new Array(currentQuestions.length).fill(undefined);
+        score = 0;
+        setupView.style.display = "none";
+        resultView.style.display = "none";
+        quizView.style.display = "block";
+        renderQuestion();
+    });
+
+    // Navigation
+    prevBtn.addEventListener("click", () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            renderQuestion();
+        }
+    });
+
+    nextBtn.addEventListener("click", () => {
+        if (currentIndex < currentQuestions.length - 1) {
+            currentIndex++;
+            renderQuestion();
+        }
+    });
+
+    // Submit and show result
+    submitBtn.addEventListener("click", () => {
+        score = 0;
+        currentQuestions.forEach((q, i) => {
+            if (answers[i] === q.answer) score++;
+        });
+
+        quizView.style.display = "none";
+        resultView.style.display = "block";
+
+        // Show result
+        document.getElementById("resultScore").textContent = score + "/" + currentQuestions.length;
+        document.getElementById("resultUser").textContent = "Jakir-এর ফলাফল";
+
+        // Icon and comment based on score
+        const icon = document.getElementById("resultIcon");
+        const comment = document.getElementById("resultComment");
+        const pct = score / currentQuestions.length;
+
+        if (pct >= 0.9) {
+            icon.textContent = "🏆";
+            comment.textContent = "অসাধারণ Jakir! আপনি একজন মেধাবী শিক্ষার্থী। এই ধারা অব্যাহত রাখুন!";
+        } else if (pct >= 0.7) {
+            icon.textContent = "🌟";
+            comment.textContent = "খুব ভালো Jakir! আরেকটু অনুশীলন করলেই পারফেক্ট!";
+        } else if (pct >= 0.5) {
+            icon.textContent = "👍";
+            comment.textContent = "ভালো হয়েছে Jakir! আরও মনোযোগ দিয়ে পড়াশোনা করুন।";
+        } else if (pct >= 0.3) {
+            icon.textContent = "📚";
+            comment.textContent = "আরও প্রস্তুতি দরকার Jakir। নিয়মিত অনুশীলন করুন, সফলতা আসবেই!";
+        } else {
+            icon.textContent = "💪";
+            comment.textContent = "চিন্তা নেই Jakir! প্রতিটি ভুল থেকে শেখা যায়। আবার চেষ্টা করুন!";
+        }
+    });
+
+    // Retry
+    retryBtn.addEventListener("click", () => {
+        resultView.style.display = "none";
+        setupView.style.display = "block";
+    });
+};
+
+
+
+/*=========================================================
             EXAM MODAL / COUNTDOWN
 =========================================================*/
 
@@ -324,6 +496,8 @@ window.addEventListener(
     () => {
 
         App.init();
+
+        App.initQuiz();
 
         App.initExamModal();
 

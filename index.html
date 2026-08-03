@@ -434,71 +434,116 @@
 
         <div class="exam-box">
 
-            <h3>পরীক্ষা শুরু করুন</h3>
+            <!-- Setup View -->
+            <div id="examSetup">
 
-            <p>আপনার পছন্দের কোর্স ও বিষয় নির্বাচন করে মক টেস্ট দিন।</p>
+                <h3>পরীক্ষা শুরু করুন</h3>
 
-            <select>
+                <p>আপনার পছন্দের কোর্স ও বিষয় নির্বাচন করে মক টেস্ট দিন।</p>
 
-                <option value="" disabled selected>কোর্স নির্বাচন করুন</option>
+                <select>
 
-                <option>Bank Job প্রস্তুতি</option>
+                    <option value="" disabled selected>কোর্স নির্বাচন করুন</option>
 
-                <option>GK Bangladesh</option>
+                    <option>Bank Job প্রস্তুতি</option>
 
-                <option>BCS Math</option>
+                    <option>GK Bangladesh</option>
 
-                <option>Primary Teacher</option>
+                    <option>BCS Math</option>
 
-                <option>Somaj Seba</option>
+                    <option>Primary Teacher</option>
 
-            </select>
+                    <option>Somaj Seba</option>
 
-            <select>
+                </select>
 
-                <option value="" disabled selected>পরীক্ষার নাম নির্বাচন করুন</option>
+                <select>
 
-                <option>Model Test 01</option>
+                    <option value="" disabled selected>পরীক্ষার নাম নির্বাচন করুন</option>
 
-                <option>Model Test 02</option>
+                    <option>Demo Mock Test</option>
 
-                <option>Model Test 03</option>
+                    <option>Model Test 01</option>
 
-                <option>Model Test 04</option>
+                    <option>Model Test 02</option>
 
-                <option>Model Test 05</option>
+                    <option>Model Test 03</option>
 
-            </select>
+                </select>
 
-            <select>
+                <select>
 
-                <option value="" disabled selected>প্রশ্ন সংখ্যা নির্বাচন করুন</option>
+                    <option value="" disabled selected>প্রশ্ন সংখ্যা নির্বাচন করুন</option>
 
-                <option>30 MCQ</option>
+                    <option>10 MCQ</option>
 
-                <option>50 MCQ</option>
+                    <option>30 MCQ</option>
 
-                <option>100 MCQ</option>
+                    <option>50 MCQ</option>
 
-                <option>120 MCQ</option>
+                    <option>120 MCQ</option>
 
-            </select>
+                </select>
 
-            <select>
+                <select>
 
-                <option value="" disabled selected>সময় নির্বাচন করুন</option>
+                    <option value="" disabled selected>সময় নির্বাচন করুন</option>
 
-                <option>15 Minutes</option>
+                    <option>15 Minutes</option>
 
-                <option>30 Minutes</option>
+                    <option>30 Minutes</option>
 
-                <option>45 Minutes</option>
+                    <option>45 Minutes</option>
 
-                <option>60 Minutes</option>
+                    <option>60 Minutes</option>
 
-            </select>
+                </select>
 
-            <button disabled style="opacity:.5;cursor:not-allowed">পরীক্ষা শুরু করুন</button>
+                <button id="startExamBtn">পরীক্ষা শুরু করুন</button>
+
+            </div>
+
+            <!-- Quiz View -->
+            <div id="quizView" class="quiz-view" style="display:none">
+
+                <div class="quiz-header">
+
+                    <span id="quizUser">🧑‍🎓 পরীক্ষার্থী: Jakir</span>
+
+                    <span id="quizProgress">প্রশ্ন ১/১০</span>
+
+                </div>
+
+                <div class="quiz-question" id="quizQuestion"></div>
+
+                <div class="quiz-options" id="quizOptions"></div>
+
+                <div class="quiz-footer">
+
+                    <button id="prevBtn" class="quiz-btn" style="display:none">← পূর্ববর্তী</button>
+
+                    <button id="nextBtn" class="quiz-btn">পরবর্তী →</button>
+
+                    <button id="submitBtn" class="quiz-btn quiz-submit" style="display:none">জমা দিন ✅</button>
+
+                </div>
+
+            </div>
+
+            <!-- Result View -->
+            <div id="quizResult" class="quiz-result" style="display:none">
+
+                <div class="result-icon" id="resultIcon">🎉</div>
+
+                <h3 id="resultUser">Jakir-এর ফলাফল</h3>
+
+                <div class="result-score" id="resultScore">0/10</div>
+
+                <p class="result-comment" id="resultComment"></p>
+
+                <button id="retryBtn" class="quiz-btn">পরীক্ষা আবার দিন 🔄</button>
+
+            </div>
 
         </div>
 
