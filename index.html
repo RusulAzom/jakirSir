@@ -498,7 +498,7 @@
 
             </select>
 
-            <button>পরীক্ষা শুরু করুন</button>
+            <button disabled style="opacity:.5;cursor:not-allowed">পরীক্ষা শুরু করুন</button>
 
         </div>
 
@@ -530,6 +530,8 @@
 
                         <th>Time</th>
 
+                        <th>Link</th>
+
                     </tr>
 
                 </thead>
@@ -544,6 +546,12 @@
 
                         <td>8:00 PM</td>
 
+                        <td>
+
+                            <a href="#" class="exam-link" data-exam="Bank Job" data-date="04 Aug" data-time="8:00 PM">Join Exam</a>
+
+                        </td>
+
                     </tr>
 
                     <tr>
@@ -553,6 +561,12 @@
                         <td>Primary</td>
 
                         <td>7:30 PM</td>
+
+                        <td>
+
+                            <a href="#" class="exam-link" data-exam="Primary" data-date="05 Aug" data-time="7:30 PM">Join Exam</a>
+
+                        </td>
 
                     </tr>
 
@@ -564,6 +578,12 @@
 
                         <td>9:00 PM</td>
 
+                        <td>
+
+                            <a href="#" class="exam-link" data-exam="BCS Math" data-date="06 Aug" data-time="9:00 PM">Join Exam</a>
+
+                        </td>
+
                     </tr>
 
                     <tr>
@@ -573,6 +593,12 @@
                         <td>Health</td>
 
                         <td>8:30 PM</td>
+
+                        <td>
+
+                            <a href="#" class="exam-link" data-exam="Health" data-date="07 Aug" data-time="8:30 PM">Join Exam</a>
+
+                        </td>
 
                     </tr>
 
@@ -584,11 +610,47 @@
 
                         <td>8:00 PM</td>
 
+                        <td>
+
+                            <a href="#" class="exam-link" data-exam="GK Mock" data-date="08 Aug" data-time="8:00 PM">Join Exam</a>
+
+                        </td>
+
                     </tr>
 
                 </tbody>
 
             </table>
+
+        </div>
+
+        <!-- Exam Countdown Modal -->
+
+        <div class="exam-modal" id="examModal">
+
+            <div class="exam-modal-content">
+
+                <div class="exam-modal-header">
+
+                    <h3>পরীক্ষার সময় বাকি</h3>
+
+                    <button class="exam-modal-close" id="examModalClose">&times;</button>
+
+                </div>
+
+                <div class="exam-modal-body" id="examModalBody">
+
+                    <span id="examModalCourse"></span>
+
+                    <span id="examModalDate"></span>
+
+                    <span id="examModalTime"></span>
+
+                    <div class="exam-countdown" id="examCountdown"></div>
+
+                </div>
+
+            </div>
 
         </div>
 

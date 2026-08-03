@@ -160,6 +160,160 @@ App.initPopularSwiper = function () {
 
 
 /*=========================================================
+            EXAM MODAL / COUNTDOWN
+=========================================================*/
+
+App.initExamModal = function () {
+
+    const modal = document.getElementById("examModal");
+
+    const closeBtn = document.getElementById("examModalClose");
+
+    const courseEl = document.getElementById("examModalCourse");
+
+    const dateEl = document.getElementById("examModalDate");
+
+    const timeEl = document.getElementById("examModalTime");
+
+    const countdownEl = document.getElementById("examCountdown");
+
+    let countdownInterval = null;
+
+    // Open modal on exam link click
+
+    document.querySelectorAll(".exam-link").forEach(link => {
+
+        link.addEventListener("click", (e) => {
+
+            e.preventDefault();
+
+            const exam = link.dataset.exam;
+
+            const date = link.dataset.date;
+
+            const time = link.dataset.time;
+
+            courseEl.textContent = "📚 " + exam;
+
+            dateEl.textContent = "📅 " + date;
+
+            timeEl.textContent = "⏰ " + time;
+
+            // Parse exam time (e.g. "8:00 PM") into today's date
+
+            const parts = time.match(/(\d+):(\d+)\s*(AM|PM)/i);
+
+            if (!parts) return;
+
+            let hours = parseInt(parts[1]);
+
+            const mins = parseInt(parts[2]);
+
+            const meridiem = parts[3].toUpperCase();
+
+            if (meridiem === "PM" && hours !== 12) hours += 12;
+
+            if (meridiem === "AM" && hours === 12) hours = 0;
+
+            const now = new Date();
+
+            const examTime = new Date(now);
+
+            examTime.setHours(hours, mins, 0, 0);
+
+            // If exam time already passed, show zero
+
+            let diff = examTime - now;
+
+            if (diff < 0) diff = 0;
+
+            // Clear previous interval
+
+            if (countdownInterval) clearInterval(countdownInterval);
+
+            const updateCountdown = () => {
+
+                const now2 = new Date();
+
+                let diff2 = examTime - now2;
+
+                if (diff2 < 0) diff2 = 0;
+
+                const totalSeconds = Math.floor(diff2 / 1000);
+
+                const days = Math.floor(totalSeconds / 86400);
+
+                const hoursLeft = Math.floor((totalSeconds % 86400) / 3600);
+
+                const minutesLeft = Math.floor((totalSeconds % 3600) / 60);
+
+                const secondsLeft = totalSeconds % 60;
+
+                const pad = (n) => String(n).padStart(2, "0");
+
+                let text = "";
+
+                if (days > 0) {
+
+                    text += days + "d ";
+
+                }
+
+                text += pad(hoursLeft) + ":" + pad(minutesLeft) + ":" + pad(secondsLeft);
+
+                countdownEl.textContent = text;
+
+                if (totalSeconds <= 0) {
+
+                    countdownEl.textContent = "00:00:00";
+
+                    clearInterval(countdownInterval);
+
+                }
+
+            };
+
+            updateCountdown();
+
+            countdownInterval = setInterval(updateCountdown, 1000);
+
+            // Show modal
+
+            modal.classList.add("show");
+
+        });
+
+    });
+
+    // Close on button click
+
+    closeBtn.addEventListener("click", () => {
+
+        modal.classList.remove("show");
+
+        if (countdownInterval) clearInterval(countdownInterval);
+
+    });
+
+    // Close on backdrop click
+
+    modal.addEventListener("click", (e) => {
+
+        if (e.target === modal) {
+
+            modal.classList.remove("show");
+
+            if (countdownInterval) clearInterval(countdownInterval);
+
+        }
+
+    });
+
+};
+
+
+
+/*=========================================================
             EVENTS
 =========================================================*/
 
@@ -170,6 +324,8 @@ window.addEventListener(
     () => {
 
         App.init();
+
+        App.initExamModal();
 
     }
 
