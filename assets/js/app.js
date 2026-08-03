@@ -160,6 +160,73 @@ App.initPopularSwiper = function () {
 
 
 /*=========================================================
+            BOOK INFO MODAL
+=========================================================*/
+
+App.initBookInfo = function () {
+
+    const modal = document.getElementById("bookInfoModal");
+    const closeBtn = document.getElementById("bookInfoClose");
+    const buyBtn = document.getElementById("bookInfoBuyBtn");
+    const titleEl = document.getElementById("bookInfoTitle");
+    const descEl = document.getElementById("bookInfoDesc");
+    const priceEl = document.getElementById("bookInfoPrice");
+    const oldEl = document.getElementById("bookInfoOld");
+
+    // Book descriptions
+    const bookDescriptions = {
+        "Bank Suggestions Book": "ব্যাংক জব পরীক্ষার জন্য সম্পূর্ণ সাজেশন ও গাইড। প্রতিটি ব্যাংকের পূর্ববর্তী প্রশ্ন বিশ্লেষণসহ গুরুত্বপূর্ণ টপিক কভার করা হয়েছে।",
+        "BCS Preliminary Book": "BCS প্রিলিমিনারি পরীক্ষার জন্য পূর্ণাঙ্গ প্রস্তুতি গাইড। বাংলা, ইংরেজি, গণিত, সাধারণ জ্ঞান সহ সব বিষয়ের সাজেশন।",
+        "English Exclusive Notes": "ইংরেজি গ্রামার, Vocabulary ও Comprehension এর এক্সক্লুসিভ নোট। চাকরির পরীক্ষার জন্য অত্যন্ত কার্যকর।",
+        "GK Book - Jakir Sir": "সাধারণ জ্ঞানের সম্পূর্ণ বই। বাংলাদেশ ও আন্তর্জাতিক বিষয়সহ গুরুত্বপূর্ণ তথ্য একত্রে সাজানো।",
+        "Math Exclusive Notes": "গণিতের এক্সক্লুসিভ নোট। অঙ্কের শর্টকাট টেকনিক ও গুরুত্বপূর্ণ সূত্রসহ সহজ সমাধান পদ্ধতি।",
+        "Shikhok Nibondhon Exclusive": "শিক্ষক নিবন্ধন পরীক্ষার জন্য এক্সক্লুসিভ প্রস্তুতি বই। বিগত বছরের প্রশ্ন ও সাজেশনসহ।"
+    };
+
+    // Open book info modal on Buy Now click
+    document.querySelectorAll(".buy-now-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const bookName = btn.dataset.book || "বই";
+            const bookPrice = btn.dataset.price || "৳0";
+            const bookOld = btn.dataset.old || "৳0";
+            titleEl.textContent = bookName;
+            descEl.textContent = bookDescriptions[bookName] || "এই বইয়ের বিস্তারিত বিবরণ শীঘ্রই আসছে।";
+            priceEl.textContent = bookPrice;
+            oldEl.textContent = bookOld;
+            modal.classList.add("show");
+        });
+    });
+
+    // Close modal
+    closeBtn.addEventListener("click", () => {
+        modal.classList.remove("show");
+    });
+
+    // Close on backdrop click
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            modal.classList.remove("show");
+        }
+    });
+
+    // Buy button - close book modal and open enrollment modal
+    buyBtn.addEventListener("click", () => {
+        modal.classList.remove("show");
+        // Open the enrollment modal
+        const enrollModal = document.getElementById("enrollModal");
+        if (enrollModal) {
+            enrollModal.classList.add("show");
+            // Go to step 1
+            document.getElementById("enrollStep1").style.display = "block";
+            document.getElementById("enrollStep2").style.display = "none";
+            document.getElementById("enrollStep3").style.display = "none";
+            document.getElementById("enrollStep4").style.display = "none";
+        }
+    });
+};
+
+
+/*=========================================================
             COURSE INFO MODAL
 =========================================================*/
 
@@ -732,6 +799,8 @@ window.addEventListener(
     () => {
 
         App.init();
+
+        App.initBookInfo();
 
         App.initCourseInfo();
 
