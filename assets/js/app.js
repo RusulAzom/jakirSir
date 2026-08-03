@@ -467,13 +467,33 @@ App.initCourseSwiper = function () {
 
     new Swiper(".courseSwiper", {
 
-        slidesPerView: "auto",
+        slidesPerView: 1.15,
 
-        spaceBetween: 18,
+        spaceBetween: 12,
 
         freeMode: true,
 
-        grabCursor: true
+        grabCursor: true,
+
+        breakpoints: {
+
+            768: {
+
+                slidesPerView: 2.5,
+
+                spaceBetween: 16
+
+            },
+
+            1200: {
+
+                slidesPerView: 3.5,
+
+                spaceBetween: 20
+
+            }
+
+        }
 
     });
 
@@ -491,13 +511,33 @@ App.initPopularSwiper = function () {
 
     new Swiper(".popularSwiper", {
 
-        slidesPerView: "auto",
+        slidesPerView: 1.15,
 
-        spaceBetween: 20,
+        spaceBetween: 12,
 
         freeMode: true,
 
-        grabCursor: true
+        grabCursor: true,
+
+        breakpoints: {
+
+            768: {
+
+                slidesPerView: 2.5,
+
+                spaceBetween: 16
+
+            },
+
+            1200: {
+
+                slidesPerView: 3.5,
+
+                spaceBetween: 20
+
+            }
+
+        }
 
     });
 
