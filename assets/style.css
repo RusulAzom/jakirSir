@@ -745,6 +745,42 @@ PDF PREVIEW
     white-space: nowrap;
 }
 
+/* E-commerce Price Styles */
+.pdf-price-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+    flex-wrap: wrap;
+}
+
+.pdf-price-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--danger);
+    background: #FEE2E2;
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+
+.pdf-price-tag strike {
+    font-size: 11px;
+    color: #94A3B8;
+    font-weight: 400;
+}
+
+.pdf-price-tag.discounted {
+    color: #15803D;
+    background: #DCFCE7;
+}
+
+.pdf-price-tag.discounted strike {
+    color: #94A3B8;
+}
+
 .free {
     background: #DCFCE7;
     color: #15803D;
