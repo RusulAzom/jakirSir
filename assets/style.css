@@ -431,6 +431,7 @@ Quick Tools
     gap: 6px;
     min-height: 72px;
     min-width: 0;
+    overflow: visible;
 }
 
 .tool:hover {
@@ -3403,7 +3404,7 @@ Responsive
     font-weight: 700;
     padding: 2px 6px;
     border-radius: 10px;
-    z-index: 2;
+    z-index: 100;
     animation: livePulse 1.5s ease-in-out infinite;
     white-space: nowrap;
 }
@@ -3418,7 +3419,7 @@ Responsive
     background: #EF4444;
     animation: liveDot 1.5s ease-in-out infinite;
     box-shadow: 0 0 6px rgba(239, 68, 68, .6);
-    z-index: 2;
+    z-index: 100;
 }
 
 @keyframes livePulse {
