@@ -860,6 +860,38 @@ App.initQuiz = function () {
 
 
 /*=========================================================
+            QUESTION BANK TABS
+=========================================================*/
+
+App.initQuestionBank = function () {
+
+    const tabs = document.querySelectorAll(".qb-tab");
+    const contents = document.querySelectorAll(".qb-content");
+
+    function switchTab(tabId) {
+
+        tabs.forEach(t => t.classList.remove("active"));
+        contents.forEach(c => c.classList.remove("active"));
+
+        document.querySelector(`.qb-tab[data-tab="${tabId}"]`)?.classList.add("active");
+        document.getElementById("tab-" + tabId)?.classList.add("active");
+
+    }
+
+    tabs.forEach(tab => {
+
+        tab.addEventListener("click", () => {
+
+            switchTab(tab.dataset.tab);
+
+        });
+
+    });
+
+};
+
+
+/*=========================================================
             EXAM MODAL / COUNTDOWN
 =========================================================*/
 
@@ -1017,29 +1049,31 @@ App.initExamModal = function () {
             EVENTS
 =========================================================*/
 
-window.addEventListener(
+    window.addEventListener(
 
-    "DOMContentLoaded",
+        "DOMContentLoaded",
 
-    () => {
+        () => {
 
-        App.init();
+            App.init();
 
-        App.initVocab();
+            App.initQuestionBank();
 
-        App.initBookInfo();
+            App.initVocab();
 
-        App.initCourseInfo();
+            App.initBookInfo();
 
-        App.initEnrollment();
+            App.initCourseInfo();
 
-        App.initQuiz();
+            App.initEnrollment();
 
-        App.initExamModal();
+            App.initQuiz();
 
-    }
+            App.initExamModal();
 
-);
+        }
+
+    );
 
 
 
