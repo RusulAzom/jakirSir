@@ -415,6 +415,7 @@ Quick Tools
     grid-template-columns: repeat(5, 1fr);
     gap: 8px;
     width: 100%;
+    padding-top: 8px;
 }
 
 .tool {
@@ -3400,7 +3401,7 @@ Responsive
     right: -6px;
     background: #EF4444;
     color: #fff;
-    font-size: 9px;
+    font-size: 6px;
     font-weight: 700;
     padding: 2px 6px;
     border-radius: 10px;
