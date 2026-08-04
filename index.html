@@ -119,9 +119,11 @@
         </div>
 
         <div class="tool-grid">
-            <a href="#" class="tool">
+            <a href="#" class="tool" id="liveMcqToolBtn" style="position:relative">
                 <i class="ri-file-list-3-line" style="color:#8B5CF6"></i>
                 <h4>MCQ</h4>
+                <span class="live-badge">Live MCQ</span>
+                <span class="live-dot"></span>
             </a>
             <a href="#" class="tool">
                 <i class="ri-book-open-line" style="color:#2563EB"></i>
@@ -2366,7 +2368,7 @@
     <!-- Statistics -->
     <!-- ===================================================== -->
 
-    <section class="stats">
+    <!-- <section class="stats">
 
         <div class="stat">
 
@@ -2400,7 +2402,7 @@
 
         </div>
 
-    </section>
+    </section> -->
 
     <!-- ===================================================== -->
     <!-- About Jakir Sir -->
@@ -2888,6 +2890,154 @@
         </a>
 
     </nav>
+
+    <!-- ===================================================== -->
+    <!-- Live MCQ Modal -->
+    <!-- ===================================================== -->
+
+    <div class="live-mcq-modal" id="liveMcqModal">
+
+        <div class="live-mcq-modal-content">
+
+            <div class="live-mcq-modal-header">
+
+                <h3>🔥 Live MCQ</h3>
+
+                <button class="live-mcq-modal-close" id="liveMcqModalClose">&times;</button>
+
+            </div>
+
+            <div class="live-mcq-modal-body">
+
+                <!-- Step 1: Subject Selection -->
+                <div id="liveMcqStep1" class="live-mcq-step">
+
+                    <div class="live-mcq-step-header">
+
+                        <span class="step-number">1</span>
+
+                        <h4>বিষয় নির্বাচন করুন</h4>
+
+                    </div>
+
+                    <div class="live-mcq-subject-list">
+
+                        <button class="live-mcq-subject" data-subject="bangla">
+                            <i class="ri-book-open-line"></i>
+                            <span>বাংলা</span>
+                        </button>
+
+                        <button class="live-mcq-subject" data-subject="english">
+                            <i class="ri-english-input"></i>
+                            <span>ইংরেজি</span>
+                        </button>
+
+                        <button class="live-mcq-subject" data-subject="math">
+                            <i class="ri-calculator-line"></i>
+                            <span>গণিত</span>
+                        </button>
+
+                        <button class="live-mcq-subject" data-subject="gk">
+                            <i class="ri-global-line"></i>
+                            <span>সাধারণ জ্ঞান</span>
+                        </button>
+
+                        <button class="live-mcq-subject" data-subject="computer">
+                            <i class="ri-computer-line"></i>
+                            <span>কম্পিউটার</span>
+                        </button>
+
+                        <button class="live-mcq-subject" data-subject="bank">
+                            <i class="ri-bank-line"></i>
+                            <span>ব্যাংক</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- Step 2: Topic Selection -->
+                <div id="liveMcqStep2" class="live-mcq-step" style="display:none">
+
+                    <div class="live-mcq-step-header">
+
+                        <button class="live-mcq-back" id="liveMcqBack1">&larr; পেছনে</button>
+
+                        <span class="step-number">2</span>
+
+                        <h4 id="liveMcqSubjectTitle">বিষয়: বাংলা</h4>
+
+                    </div>
+
+                    <div class="live-mcq-topic-list" id="liveMcqTopicList">
+
+                        <!-- Topics inserted by JS -->
+
+                    </div>
+
+                </div>
+
+                <!-- Step 3: Quiz -->
+                <div id="liveMcqStep3" class="live-mcq-step" style="display:none">
+
+                    <div class="live-mcq-step-header">
+
+                        <button class="live-mcq-back" id="liveMcqBack2">&larr; পেছনে</button>
+
+                        <span class="step-number">3</span>
+
+                        <h4 id="liveMcqTopicTitle">টপিক: সমাস</h4>
+
+                    </div>
+
+                    <div class="live-mcq-quiz-header">
+
+                        <span id="liveMcqProgress">প্রশ্ন ১/৫</span>
+
+                        <span id="liveMcqTimer">00:00</span>
+
+                    </div>
+
+                    <div class="live-mcq-quiz-question" id="liveMcqQuestion"></div>
+
+                    <div class="live-mcq-quiz-options" id="liveMcqOptions"></div>
+
+                    <div class="live-mcq-quiz-footer">
+
+                        <button id="liveMcqPrevBtn" class="live-mcq-btn" style="display:none">← পূর্ববর্তী</button>
+
+                        <button id="liveMcqNextBtn" class="live-mcq-btn live-mcq-btn-primary">পরবর্তী →</button>
+
+                        <button id="liveMcqSubmitBtn" class="live-mcq-btn live-mcq-btn-success" style="display:none">জমা দিন ✅</button>
+
+                    </div>
+
+                </div>
+
+                <!-- Step 4: Result -->
+                <div id="liveMcqStep4" class="live-mcq-step" style="display:none">
+
+                    <div class="live-mcq-result">
+
+                        <div class="live-mcq-result-icon" id="liveMcqResultIcon">🎉</div>
+
+                        <h3 id="liveMcqResultTitle">ফলাফল</h3>
+
+                        <div class="live-mcq-result-score" id="liveMcqResultScore">0/5</div>
+
+                        <p class="live-mcq-result-comment" id="liveMcqResultComment"></p>
+
+                        <button class="live-mcq-btn live-mcq-btn-primary" id="liveMcqRetryBtn">আবার খেলুন 🔄</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
     <!-- ===================================================== -->
     <!-- Vocabulary Modal -->
