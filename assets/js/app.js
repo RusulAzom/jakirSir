@@ -160,6 +160,231 @@ App.initPopularSwiper = function () {
 
 
 /*=========================================================
+            VOCABULARY MODAL
+=========================================================*/
+
+App.initVocab = function () {
+
+    const modal = document.getElementById("vocabModal");
+    const closeBtn = document.getElementById("vocabModalClose");
+    const homeView = document.getElementById("vocabHome");
+    const quizView = document.getElementById("vocabQuiz");
+    const resultView = document.getElementById("vocabResult");
+    const listBtn = document.getElementById("vocabListBtn");
+    const gameBtn = document.getElementById("vocabGameBtn");
+    const questionEl = document.getElementById("vocabQuizQuestion");
+    const optionsEl = document.getElementById("vocabQuizOptions");
+    const progressEl = document.getElementById("vocabQuizProgress");
+    const scoreEl = document.getElementById("vocabQuizScore");
+    const prevBtn = document.getElementById("vocabPrevBtn");
+    const nextBtn = document.getElementById("vocabNextBtn");
+    const submitBtn = document.getElementById("vocabSubmitBtn");
+    const resultIcon = document.getElementById("vocabResultIcon");
+    const resultScore = document.getElementById("vocabResultScore");
+    const resultComment = document.getElementById("vocabResultComment");
+    const retryBtn = document.getElementById("vocabRetryBtn");
+
+    // Question Bank - 10 questions in exact order
+    const vocabQuestions = [
+        {
+            exam: "Bangladesh Bank AD - 2023",
+            question: "'ABATE' এর সমার্থক শব্দ কোনটি?",
+            options: ["Increase", "Diminish", "Create", "Produce"],
+            answer: 1
+        },
+        {
+            exam: "Sonali Bank Officer - 2024",
+            question: "'BENEvolENT' এর সমার্থক শব্দ কোনটি?",
+            options: ["Cruel", "Kind-hearted", "Selfish", "Rude"],
+            answer: 1
+        },
+        {
+            exam: "Janata Bank Senior Officer - 2022",
+            question: "'FRUGAL' এর বিপরীত শব্দ কোনটি?",
+            options: ["Thrifty", "Economical", "Extravagant", "Careful"],
+            answer: 2
+        },
+        {
+            exam: "Agrani Bank Officer - 2023",
+            question: "'VACILLATE' এর সমার্থক শব্দ কোনটি?",
+            options: ["Waver", "Decide", "Firm", "Resolve"],
+            answer: 0
+        },
+        {
+            exam: "Rupali Bank - 2023",
+            question: "'MELANCHOLY' এর সমার্থক শব্দ কোনটি?",
+            options: ["Gloomy", "Joyful", "Cheerful", "Lively"],
+            answer: 0
+        },
+        {
+            exam: "Combined 5 Bank Officer - 2024",
+            question: "'PRUDENT' এর সমার্থক শব্দ কোনটি?",
+            options: ["Foolish", "Wise", "Careless", "Hasty"],
+            answer: 1
+        },
+        {
+            exam: "Bangladesh Bank Officer Cash - 2022",
+            question: "'DELETERIOUS' এর সমার্থক শব্দ কোনটি?",
+            options: ["Harmless", "Harmful", "Useful", "Beneficial"],
+            answer: 1
+        },
+        {
+            exam: "Sonali Bank - 2023",
+            question: "'CANDID' এর বিপরীত শব্দ কোনটি?",
+            options: ["Honest", "Frank", "Deceitful", "Sincere"],
+            answer: 2
+        },
+        {
+            exam: "Janata Bank - 2024",
+            question: "'LACONIC' এর সমার্থক শব্দ কোনটি?",
+            options: ["Wordy", "Brief", "Lengthy", "Talkative"],
+            answer: 1
+        },
+        {
+            exam: "Bangladesh Bank - 2024",
+            question: "'MUNDANE' এর সমার্থক শব্দ কোনটি?",
+            options: ["Extraordinary", "Ordinary", "Excellent", "Special"],
+            answer: 1
+        }
+    ];
+
+    let currentIndex = 0;
+    let answers = [];
+    let score = 0;
+
+    // Helper: Bangla number
+    function toBanglaNumber(num) {
+        const bn = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
+        return String(num).split("").map(d => bn[parseInt(d)] || d).join("");
+    }
+
+    // Show specific view
+    function showView(view) {
+        homeView.style.display = "none";
+        quizView.style.display = "none";
+        resultView.style.display = "none";
+        view.style.display = "block";
+    }
+
+    // Render question
+    function renderQuestion() {
+        const q = vocabQuestions[currentIndex];
+        questionEl.textContent = (currentIndex + 1) + ". " + q.question + " (" + q.exam + ")";
+        progressEl.textContent = "প্রশ্ন " + toBanglaNumber(currentIndex + 1) + "/" + toBanglaNumber(vocabQuestions.length);
+        scoreEl.textContent = "Score: " + score;
+
+        optionsEl.innerHTML = "";
+        q.options.forEach((opt, i) => {
+            const btn = document.createElement("button");
+            btn.className = "quiz-option";
+            btn.textContent = String.fromCharCode(65 + i) + ". " + opt;
+            if (answers[currentIndex] !== undefined && answers[currentIndex] === i) {
+                btn.classList.add("selected");
+            }
+            btn.addEventListener("click", () => {
+                answers[currentIndex] = i;
+                renderQuestion();
+            });
+            optionsEl.appendChild(btn);
+        });
+
+        // Toggle nav buttons
+        prevBtn.style.display = currentIndex === 0 ? "none" : "flex";
+        if (currentIndex === vocabQuestions.length - 1) {
+            nextBtn.style.display = "none";
+            submitBtn.style.display = "flex";
+        } else {
+            nextBtn.style.display = "flex";
+            submitBtn.style.display = "none";
+        }
+    }
+
+    // Open modal on Vocabulary tool click
+    document.getElementById("vocabToolBtn").addEventListener("click", (e) => {
+        e.preventDefault();
+        showView(homeView);
+        modal.classList.add("show");
+    });
+
+    // Close modal
+    closeBtn.addEventListener("click", () => {
+        modal.classList.remove("show");
+    });
+
+    // Close on backdrop click
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            modal.classList.remove("show");
+        }
+    });
+
+    // Start game
+    gameBtn.addEventListener("click", () => {
+        currentIndex = 0;
+        answers = new Array(vocabQuestions.length).fill(undefined);
+        score = 0;
+        showView(quizView);
+        renderQuestion();
+    });
+
+    // Navigation
+    prevBtn.addEventListener("click", () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            renderQuestion();
+        }
+    });
+
+    nextBtn.addEventListener("click", () => {
+        if (currentIndex < vocabQuestions.length - 1) {
+            currentIndex++;
+            renderQuestion();
+        }
+    });
+
+    // Submit
+    submitBtn.addEventListener("click", () => {
+        score = 0;
+        vocabQuestions.forEach((q, i) => {
+            if (answers[i] === q.answer) score++;
+        });
+
+        resultScore.textContent = score + "/" + vocabQuestions.length;
+
+        const pct = score / vocabQuestions.length;
+        if (pct === 1) {
+            resultIcon.textContent = "🏆";
+            resultComment.textContent = "অসাধারণ! পারফেক্ট স্কোর! আপনি Vocabulary Master!";
+        } else if (pct >= 0.8) {
+            resultIcon.textContent = "🌟";
+            resultComment.textContent = "খুব ভালো! আর একটু practice করলে পারফেক্ট হবে!";
+        } else if (pct >= 0.6) {
+            resultIcon.textContent = "👍";
+            resultComment.textContent = "ভালো হয়েছে! Regular practice রাখুন।";
+        } else if (pct >= 0.4) {
+            resultIcon.textContent = "📚";
+            resultComment.textContent = "আরও প্রস্তুতি দরকার। Vocabulary দিয়ে দৈনিক practice করুন।";
+        } else {
+            resultIcon.textContent = "💪";
+            resultComment.textContent = "চিন্তা নেই! প্রতিটি ভুল থেকে শেখা যায়। আবার চেষ্টা করুন!";
+        }
+
+        showView(resultView);
+    });
+
+    // Retry
+    retryBtn.addEventListener("click", () => {
+        showView(homeView);
+    });
+
+    // List button stays disabled
+    listBtn.addEventListener("click", () => {
+        // No action - disabled
+    });
+};
+
+
+/*=========================================================
             BOOK INFO MODAL
 =========================================================*/
 
@@ -799,6 +1024,8 @@ window.addEventListener(
     () => {
 
         App.init();
+
+        App.initVocab();
 
         App.initBookInfo();
 

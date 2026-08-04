@@ -151,7 +151,7 @@
                 <i class="ri-english-input" style="color:#3B82F6"></i>
                 <h4>English</h4>
             </a>
-            <a href="#" class="tool">
+            <a href="#" class="tool" id="vocabToolBtn">
                 <i class="ri-translate-2" style="color:#9333EA"></i>
                 <h4>Vocabulary</h4>
             </a>
@@ -2446,6 +2446,97 @@
         </a>
 
     </nav>
+
+    <!-- ===================================================== -->
+    <!-- Vocabulary Modal -->
+    <!-- ===================================================== -->
+
+    <div class="vocab-modal" id="vocabModal">
+
+        <div class="vocab-modal-content">
+
+            <div class="vocab-modal-header">
+
+                <h3>📚 Vocabulary Master</h3>
+
+                <button class="vocab-modal-close" id="vocabModalClose">&times;</button>
+
+            </div>
+
+            <div class="vocab-modal-body">
+
+                <!-- Home View -->
+                <div id="vocabHome" class="vocab-view">
+
+                    <div class="vocab-info-box">
+
+                        <i class="ri-book-read-line"></i>
+
+                        <p>1500+ bank, bcs, ILETS, goverment job vocabulary ei list ekbar porle sob vocabulary ayotto hbe</p>
+
+                    </div>
+
+                    <button class="vocab-btn vocab-btn-secondary" id="vocabListBtn" disabled>
+
+                        <i class="ri-list-check"></i> See Vocabulary List
+
+                    </button>
+
+                    <button class="vocab-btn vocab-btn-primary" id="vocabGameBtn">
+
+                        <i class="ri-gamepad-line"></i> Play Vocabulary Game
+
+                    </button>
+
+                </div>
+
+                <!-- Quiz View -->
+                <div id="vocabQuiz" class="vocab-view" style="display:none">
+
+                    <div class="vocab-quiz-header">
+
+                        <span id="vocabQuizProgress">প্রশ্ন ১/১০</span>
+
+                        <span id="vocabQuizScore">Score: 0</span>
+
+                    </div>
+
+                    <div class="vocab-quiz-question" id="vocabQuizQuestion"></div>
+
+                    <div class="vocab-quiz-options" id="vocabQuizOptions"></div>
+
+                    <div class="vocab-quiz-footer">
+
+                        <button id="vocabPrevBtn" class="vocab-btn vocab-btn-sm" style="display:none">← পূর্ববর্তী</button>
+
+                        <button id="vocabNextBtn" class="vocab-btn vocab-btn-sm vocab-btn-primary">পরবর্তী →</button>
+
+                        <button id="vocabSubmitBtn" class="vocab-btn vocab-btn-sm vocab-btn-success" style="display:none">জমা দিন ✅</button>
+
+                    </div>
+
+                </div>
+
+                <!-- Result View -->
+                <div id="vocabResult" class="vocab-view" style="display:none">
+
+                    <div class="vocab-result-icon" id="vocabResultIcon">🎉</div>
+
+                    <h3 id="vocabResultTitle">Vocabulary Quiz Result</h3>
+
+                    <div class="vocab-result-score" id="vocabResultScore">0/10</div>
+
+                    <p class="vocab-result-comment" id="vocabResultComment"></p>
+
+                    <button class="vocab-btn vocab-btn-primary" id="vocabRetryBtn">আবার খেলুন 🔄</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
     <!-- Swiper -->
 
